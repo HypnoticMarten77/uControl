@@ -26,3 +26,5 @@ Easy AT command set tunneled over SPI protocol to get up and running quickly
 Weight: 3g
 
 
+--Technical Details
+https://www.adafruit.com/product/2633#technical-details
