@@ -1,1 +1,10 @@
 2/24, 2/25 - Sam & Juan make wireframe. Mason & Andres design housing.
+
+3/12, 3/13- Entire team decided on hardware needed.
+
+3/13- Hardware ordered (Bluetooth modules).
+
+3/18, 3/19- Received the hardware (Bluetooth modules).
+
+3/19- Meeting to create Android Studio App Project and Microchip Studio Project (Mason, Andres, Juan, Sam)
+3/19- Mason soldered headers and distributed hardware to everyone.
