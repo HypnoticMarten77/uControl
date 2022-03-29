@@ -8,3 +8,5 @@
 
 3/19- Meeting to create Android Studio App Project and Microchip Studio Project (Mason, Andres, Juan, Sam)
 3/19- Mason soldered headers and distributed hardware to everyone.
+
+3/29 - Mason starting AT command implementation for bluetooth modules via SPI (getting network connections setup)
