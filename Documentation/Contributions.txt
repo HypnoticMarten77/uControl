@@ -10,3 +10,4 @@
 3/19- Mason soldered headers and distributed hardware to everyone.
 
 3/29 - Mason starting AT command implementation for bluetooth modules via SPI (getting network connections setup)
+3/30 - Continue AT command implementation. (Hope to finish tomorrow/over the weekend.)
