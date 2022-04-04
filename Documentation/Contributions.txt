@@ -13,7 +13,7 @@
 3/30 - Mason Continue AT command implementation. (Hope to finish tomorrow/over the weekend.)
 3/30, 3/31- Mason Wired up the Bluetooth module, currently in pairing mode and waiting for AT commands. Implemented SPI library and confirmed with oscilloscope that this indeed works.
 
-3/31 - Andres created vector assets for the Android app.
+3/31 - Andres created vector assets for the Android app and distrubuted AVD with testing device specifications.
 
 4/1 - Mason still working on AT commands, bluetooth module is responding but I have not decoded the return messages yet.
 
