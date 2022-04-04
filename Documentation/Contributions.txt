@@ -15,3 +15,5 @@
 4/1 - Mason still working on AT commands, bluetooth module is responding but I have not decoded the return messages yet.
 
 4/2 - Mason hooked up USART to output and debug using PuTTY serial plot.
+
+4/4 - Sam tested app on physical device.
