@@ -21,4 +21,4 @@
 
 4/3 - Andres implemented a basic splash screen that redirects to home screen on app startup. Edited app manifold to display correct app name and implemented app icons.
 
-4/4 - Sam tested app on physical device.
+4/4 - Sam tested app on physical device, made home screen layout.
