@@ -16,7 +16,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="Launcher"
+            android:label="uC Companion"
             android:theme="@style/Theme.UControlCompanion.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
