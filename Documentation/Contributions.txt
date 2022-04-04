@@ -12,8 +12,13 @@
 3/29 - Mason starting AT command implementation for bluetooth modules via SPI (getting network connections setup)
 3/30 - Mason Continue AT command implementation. (Hope to finish tomorrow/over the weekend.)
 3/30, 3/31- Mason Wired up the Bluetooth module, currently in pairing mode and waiting for AT commands. Implemented SPI library and confirmed with oscilloscope that this indeed works.
+
+3/31 - Andres created vector assets for the Android app.
+
 4/1 - Mason still working on AT commands, bluetooth module is responding but I have not decoded the return messages yet.
 
 4/2 - Mason hooked up USART to output and debug using PuTTY serial plot.
+
+4/3 - Andres implemented a basic splash screen that redirects to home screen on app startup. Edited app manifold to display correct app name and implemented app icons.
 
 4/4 - Sam tested app on physical device.
