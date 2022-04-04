@@ -1,1 +1,17 @@
 2/24, 2/25 - Sam & Juan make wireframe. Mason & Andres design housing.
+
+3/12, 3/13- Entire team decided on hardware needed.
+
+3/13- Hardware ordered (Bluetooth modules).
+
+3/18, 3/19- Received the hardware (Bluetooth modules).
+
+3/19- Meeting to create Android Studio App Project and Microchip Studio Project (Mason, Andres, Juan, Sam)
+3/19- Mason soldered headers and distributed hardware to everyone.
+
+3/29 - Mason starting AT command implementation for bluetooth modules via SPI (getting network connections setup)
+3/30 - Mason Continue AT command implementation. (Hope to finish tomorrow/over the weekend.)
+3/30, 3/31- Mason Wired up the Bluetooth module, currently in pairing mode and waiting for AT commands. Implemented SPI library and confirmed with oscilloscope that this indeed works.
+4/1 - Mason still working on AT commands, bluetooth module is responding but I have not decoded the return messages yet.
+
+4/2 - Mason hooked up USART to output and debug using PuTTY serial plot.
