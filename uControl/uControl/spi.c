@@ -50,7 +50,7 @@ void spi_write_string(const char * str){
 
 void spi_write(uint8_t data)
 {
-	PORTF.OUTCLR = SS_bm;
+	//PORTF.OUTCLR = SS_bm;
 	
 	for(int i = 0; i < 1000; i++); //Add delay
 	
@@ -59,7 +59,7 @@ void spi_write(uint8_t data)
 	
 	//Wait for transmission to complete
 	while(!(SPIF.STATUS & SPI_IF_bm));
-	PORTF.OUTSET = SS_bm;
+	//PORTF.OUTSET = SS_bm;
 	
 	
 
@@ -78,7 +78,7 @@ void spi_write(uint8_t data)
 uint8_t spi_read(void)
 {
 	
-	PORTF.OUTCLR = SS_bm;
+	//PORTF.OUTCLR = SS_bm;
 	for(int i = 0; i < 1000; i++); //Add delay
 	
 	/* Write some arbitrary data to initiate a transfer. */
@@ -87,7 +87,7 @@ uint8_t spi_read(void)
 	//Wait for transmission to complete
 	while(!(SPIF.STATUS & SPI_IF_bm));
 	
-	PORTF.OUTSET = SS_bm;
+	//PORTF.OUTSET = SS_bm;
 	
 	/* After the transmission, return the data that was received. */
 	return SPIF.DATA;

@@ -2,6 +2,7 @@
 #include <xc.h>
 
 #define RST_bm     (1<<3)
+#define SS_bm     (1<<4)
 
 
 void tcc0_init(void)
@@ -68,54 +69,28 @@ int main(void)
 		
 		//spi_write_string("ATI");
 		//usartd0_out_char(spi_read());
+		PORTF.OUTCLR = SS_bm;
 		
-		spi_write(0x10);
-		spi_write(0x00);
+		spi_write(0x10);           //10-01-0A-nBytes-0byte-1byte-...-nbyte this sends to uart
+		spi_write(0x01);
 		spi_write(0x0A);
 		spi_write(0x03);
-		spi_write_string("ATI");
+		spi_write_string("Poo");
 		
-		usartd0_out_char(SPIF.DATA);
+		PORTF.OUTSET = SS_bm;
 		
-// 		spi_write('A');
-// 		spi_write('T');
-// 		uint8_t temp = spi_read();
-// 		usartd0_out_char(temp);
-// 		temp = spi_read();
-// 		usartd0_out_char(temp);
-// 		temp = spi_read();
-// 		usartd0_out_char(temp);
-// 		temp = spi_read();
-// 		usartd0_out_char(temp);
-// 		
-// 		usartd0_out_string("\n");
+		//PORTF.OUTCLR = SS_bm;
+// 		usartd0_out_char(spi_read());
+// 		usartd0_out_char(spi_read());
+// 		usartd0_out_char(spi_read());
+// 		usartd0_out_char(spi_read());
+// 		usartd0_out_char(spi_read());
+// 		usartd0_out_char(spi_read());
+// 		usartd0_out_char(spi_read());
+// 		PORTF.OUTSET = SS_bm;
 		
-		/*spi_write(0x41); //A
-		spi_write(0x54); //T
-		spi_write(0x2B); //+
-		spi_write(0x42); //B
-		spi_write(0x4C); //L
-		spi_write(0x45); //E
-		spi_write(0x53); //S
-		spi_write(0x54); //T
-		spi_write(0x41); //A
-		spi_write(0x52); //R
-		spi_write(0x54); //T
-		spi_write(0x41); //A
-		spi_write(0x44); //D
-		spi_write(0x56); //V
-		spi_write(0x3D); //=
-		spi_write(0x3F); //?
+		//usartd0_out_char(SPIF.DATA);
 		
-		//spi_read();
-		//spi_read();
-		//spi_read();
-		//spi_read();
-		//spi_read();
-		//spi_read();
-		
-        //TODO:: Please write your application code 
-		
-		*/
+
     }
 }
