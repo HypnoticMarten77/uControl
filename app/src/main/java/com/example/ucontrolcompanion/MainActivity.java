@@ -34,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent myIntent = new Intent(MainActivity.this, HomeActivity.class);
+                // Instead of going to Home it goes to Bluetooth
+                Intent myIntent = new Intent(MainActivity.this, Bluetooth.class);
                 startActivityForResult(myIntent, 0);
             }
         }, 3000);
