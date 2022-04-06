@@ -1,13 +1,14 @@
 package com.example.ucontrolcompanion;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.bluetooth.BluetoothAdapter;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
@@ -17,8 +18,10 @@ import android.widget.Button;
 public class BluetoothTest extends AppCompatActivity {
 
     // Button and permission codes to identify which permission to check.
-    private Button pairBtn;
+    private Button enableBtn;
     private static final int BT_ADVERT_PERM_CODE = 100;
+    private int REQUEST_ENABLE_BT;
+    BluetoothAdapter btAdapter = BluetoothAdapter.getDefaultAdapter();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,15 +32,31 @@ public class BluetoothTest extends AppCompatActivity {
             Toast.makeText(this, "Your device does not support Bluetooth Low Energy.", Toast.LENGTH_LONG).show();
         }
 
-        pairBtn = (Button) findViewById(R.id.pairBtn);
-        pairBtn.setOnClickListener(new View.OnClickListener() {
+        enableBtn = (Button) findViewById(R.id.enableBtn);
+        enableBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Check for perms
-                checkPermission(Manifest.permission.BLUETOOTH_ADVERTISE, BT_ADVERT_PERM_CODE);
+                if (btAdapter == null)
+                    Toast.makeText(BluetoothTest.this, "No Bluetooth adapter detected.", Toast.LENGTH_SHORT).show();
+                else {
+                    if (!btAdapter.isEnabled()) {
+                        checkPermission(Manifest.permission.BLUETOOTH_ADVERTISE, BT_ADVERT_PERM_CODE);
+                        Intent enableBTIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                        startActivityForResult(enableBTIntent, REQUEST_ENABLE_BT);
+                    }
+                }
             }
         });
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK)
+            Toast.makeText(BluetoothTest.this, "BT enabled.", Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(BluetoothTest.this, "BT was not enabled.", Toast.LENGTH_SHORT).show();
     }
 
     // Check and request for permission.
@@ -49,7 +68,7 @@ public class BluetoothTest extends AppCompatActivity {
             ActivityCompat.requestPermissions(BluetoothTest.this, new String[] { permission }, requestCode);
         }
         else {
-            Toast.makeText(BluetoothTest.this, "Permission " + requestCode + " already granted", Toast.LENGTH_SHORT).show();
+            Toast.makeText(BluetoothTest.this, "Permission already granted", Toast.LENGTH_SHORT).show();
         }
     }
 
