@@ -3,7 +3,7 @@
     package="com.example.ucontrolcompanion">
 
     <!-- Indicate that Bluetooth is a critical feature of this app. -->
-    <uses-feature android:name="android.hardware.bluetooth" android:required="true"/>
+    <uses-feature android:name="android.hardware.bluetooth_le" android:required="true"/>
 
     <!-- Request legacy Bluetooth permissions on older devices. -->
     <uses-permission android:name="android.permission.BLUETOOTH"
