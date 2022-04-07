@@ -78,7 +78,7 @@ public class DeviceScanActivity extends BluetoothTest {
         public void onScanResult(int callbackType, ScanResult result) {
             super.onScanResult(callbackType, result);
             checkPermission(Manifest.permission.BLUETOOTH_SCAN, BT_SCAN_PERM_CODE);
-            if (result.getDevice().getName() == "Adafruit Bluefruit LE")
+            if (result.getDevice().getName().contains("Adafruit"))
                 Toast.makeText(DeviceScanActivity.this, "Address: " + result.getDevice().getAddress(), Toast.LENGTH_LONG).show();
         }
     };
