@@ -77,9 +77,9 @@ public class DeviceScanActivity extends BluetoothTest {
         @Override
         public void onScanResult(int callbackType, ScanResult result) {
             super.onScanResult(callbackType, result);
-            checkPermission(Manifest.permission.BLUETOOTH_SCAN, BT_SCAN_PERM_CODE);
-            Toast.makeText(DeviceScanActivity.this, "Name: " + result.getDevice().getName(), Toast.LENGTH_LONG).show();
-            Toast.makeText(DeviceScanActivity.this, "Address: " + result.getDevice().getAddress(), Toast.LENGTH_LONG).show();
+            checkPermission(Manifest.permission.BLUETOOTH_CONNECT, BT_CONNECT_PERM_CODE);
+            if (result.getDevice().getName() != null && result.getDevice().getName().contains("Adafruit"))
+                Toast.makeText(DeviceScanActivity.this, "Address: " + result.getDevice().getAddress(), Toast.LENGTH_LONG).show();
         }
     };
 }
