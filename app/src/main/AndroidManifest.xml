@@ -35,12 +35,6 @@
             android:name=".BluetoothTest"
             android:exported="false" />
         <activity
-            android:name=".Bluetooth"
-            android:exported="false" />
-        <activity
-            android:name=".bluetooth2"
-            android:exported="false" />
-        <activity
             android:name=".HomeActivity"
             android:exported="false"
             android:label="Home" />
