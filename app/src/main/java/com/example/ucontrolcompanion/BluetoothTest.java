@@ -5,20 +5,35 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.le.BluetoothLeScanner;
+import android.bluetooth.le.ScanCallback;
+import android.bluetooth.le.ScanResult;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Button;
+
+import java.util.ArrayList;
 
 public class BluetoothTest extends AppCompatActivity {
 
     // Button and permission codes to identify which permission to check.
-    private Button enableBtn;
+    private Button enableBtn, findBtn;
     private static final int BT_ADVERT_PERM_CODE = 100;
     private int REQUEST_ENABLE_BT;
     private boolean permissionGranted = false;
@@ -51,6 +66,15 @@ public class BluetoothTest extends AppCompatActivity {
             }
         });
 
+        findBtn = (Button) findViewById(R.id.findBtn);
+        findBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(BluetoothTest.this, DeviceScanActivity.class);
+                startActivityForResult(myIntent, 0);
+            }
+        });
+
     }
 
     @Override
@@ -71,7 +95,6 @@ public class BluetoothTest extends AppCompatActivity {
             ActivityCompat.requestPermissions(BluetoothTest.this, new String[] { permission }, requestCode);
         }
         else {
-            Toast.makeText(BluetoothTest.this, "Permission already granted", Toast.LENGTH_SHORT).show();
             permissionGranted = true;
         }
     }
@@ -100,12 +123,4 @@ public class BluetoothTest extends AppCompatActivity {
             }
         }
     }
-
-    // Register the permissions callback, which handles the user's response to the
-    // system permissions dialog. Save the return value, an instance of
-    // ActivityResultLauncher, as an instance variable.
-    /*private ActivityResultLauncher<String> requestPermissionLauncher =
-                registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
-
-                })*/
 }
