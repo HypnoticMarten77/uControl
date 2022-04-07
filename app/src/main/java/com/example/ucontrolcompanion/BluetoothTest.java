@@ -21,6 +21,7 @@ public class BluetoothTest extends AppCompatActivity {
     private Button enableBtn;
     private static final int BT_ADVERT_PERM_CODE = 100;
     private int REQUEST_ENABLE_BT;
+    private boolean permissionGranted = false;
     BluetoothAdapter btAdapter = BluetoothAdapter.getDefaultAdapter();
 
     @Override
@@ -40,9 +41,11 @@ public class BluetoothTest extends AppCompatActivity {
                     Toast.makeText(BluetoothTest.this, "No Bluetooth adapter detected.", Toast.LENGTH_SHORT).show();
                 else {
                     if (!btAdapter.isEnabled()) {
-                        checkPermission(Manifest.permission.BLUETOOTH_ADVERTISE, BT_ADVERT_PERM_CODE);
-                        Intent enableBTIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-                        startActivityForResult(enableBTIntent, REQUEST_ENABLE_BT);
+                        checkPermission(Manifest.permission.BLUETOOTH_CONNECT, BT_ADVERT_PERM_CODE);
+                        if (permissionGranted) {
+                            Intent enableBTIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                            startActivityForResult(enableBTIntent, REQUEST_ENABLE_BT);
+                        }
                     }
                 }
             }
@@ -69,6 +72,7 @@ public class BluetoothTest extends AppCompatActivity {
         }
         else {
             Toast.makeText(BluetoothTest.this, "Permission already granted", Toast.LENGTH_SHORT).show();
+            permissionGranted = true;
         }
     }
 
@@ -88,9 +92,11 @@ public class BluetoothTest extends AppCompatActivity {
         if (requestCode == BT_ADVERT_PERM_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(BluetoothTest.this, "BT Advertise perm granted.", Toast.LENGTH_SHORT) .show();
+                permissionGranted = true;
             }
             else {
                 Toast.makeText(BluetoothTest.this, "BT Advertise perm denied.", Toast.LENGTH_SHORT) .show();
+                permissionGranted = false;
             }
         }
     }
