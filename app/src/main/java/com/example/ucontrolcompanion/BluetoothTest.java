@@ -72,8 +72,14 @@ public class BluetoothTest extends AppCompatActivity {
         findBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(BluetoothTest.this, DeviceScanActivity.class);
-                startActivityForResult(myIntent, 0);
+                checkPermission(Manifest.permission.BLUETOOTH_CONNECT, BT_CONNECT_PERM_CODE);
+                if (permConnect)
+                {
+                    Intent myIntent = new Intent(BluetoothTest.this, DeviceScanActivity.class);
+                    startActivityForResult(myIntent, 0);
+                }
+                else
+                    Toast.makeText(BluetoothTest.this, "Please give BT connect perm.", Toast.LENGTH_SHORT).show();
             }
         });
 
