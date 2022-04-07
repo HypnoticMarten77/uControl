@@ -40,8 +40,11 @@ public class DeviceScanActivity extends BluetoothTest {
         startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkPermission(Manifest.permission.BLUETOOTH_CONNECT, 100);
-                scanLeDevice();
+                checkPermission(Manifest.permission.BLUETOOTH_SCAN, BT_SCAN_PERM_CODE);
+                if (permScan)
+                    scanLeDevice();
+                else
+                    Toast.makeText(DeviceScanActivity.this, "Scan perm not granted.", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -53,13 +56,13 @@ public class DeviceScanActivity extends BluetoothTest {
                 @Override
                 public void run() {
                     scanning = false;
-                    checkPermission(Manifest.permission.BLUETOOTH_CONNECT, 100);
+                    checkPermission(Manifest.permission.BLUETOOTH_SCAN, BT_SCAN_PERM_CODE);
                     bluetoothLeScanner.stopScan(leScanCallback);
                 }
             }, SCAN_PERIOD);
 
             scanning = true;
-            checkPermission(Manifest.permission.BLUETOOTH_CONNECT, 100);
+            checkPermission(Manifest.permission.BLUETOOTH_SCAN, BT_SCAN_PERM_CODE);
             bluetoothLeScanner.startScan(leScanCallback);
         }
         else
@@ -74,7 +77,7 @@ public class DeviceScanActivity extends BluetoothTest {
         @Override
         public void onScanResult(int callbackType, ScanResult result) {
             super.onScanResult(callbackType, result);
-            checkPermission(Manifest.permission.BLUETOOTH_CONNECT, 100);
+            checkPermission(Manifest.permission.BLUETOOTH_SCAN, BT_SCAN_PERM_CODE);
             Toast.makeText(DeviceScanActivity.this, "Name: " + result.getDevice().getName(), Toast.LENGTH_LONG).show();
             Toast.makeText(DeviceScanActivity.this, "Address: " + result.getDevice().getAddress(), Toast.LENGTH_LONG).show();
         }
