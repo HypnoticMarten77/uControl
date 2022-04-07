@@ -40,7 +40,7 @@ public class BluetoothTest extends AppCompatActivity {
                     Toast.makeText(BluetoothTest.this, "No Bluetooth adapter detected.", Toast.LENGTH_SHORT).show();
                 else {
                     if (!btAdapter.isEnabled()) {
-                        checkPermission(Manifest.permission.BLUETOOTH_ADVERTISE, BT_ADVERT_PERM_CODE);
+                        checkPermission(Manifest.permission.BLUETOOTH_CONNECT, BT_ADVERT_PERM_CODE);
                         Intent enableBTIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                         startActivityForResult(enableBTIntent, REQUEST_ENABLE_BT);
                     }
