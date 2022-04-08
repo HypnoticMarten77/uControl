@@ -43,7 +43,7 @@ uint8_t spi_read(void)
 	
 	
 	/* Write some arbitrary data to initiate a transfer. */
-	SPIF.DATA = 0x00;
+	SPIF.DATA = 0x01;
 
 	//Wait for transmission to complete by polling the interrupt flag
 	while(!(SPIF.STATUS & SPI_IF_bm));

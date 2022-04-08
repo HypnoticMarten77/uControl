@@ -1,8 +1,53 @@
 #include <avr/io.h>
+#include <avr/interrupt.h>
 #include <xc.h>
 
-#define RST_bm     (1<<3)
+
 #define SS_bm     (1<<4)
+#define IRQ_bm	(1<<3)
+
+
+
+void int_init(void)
+{
+	//Enable low level interrupts
+	PMIC.CTRL = PMIC_LOLVLEN_bm;
+	//Enable global interrupts
+	sei();
+	PORTF.DIRCLR = IRQ_bm; //Make input
+	PORTF.OUTCLR = IRQ_bm;
+	PORTF.INTCTRL = 0x01; //Low level interrupts on PORTF
+	PORTF.INT0MASK = IRQ_bm; //PIN3 Interrupt enable
+	PORTF.PIN3CTRL = PORT_ISC_RISING_gc; //Sense only on rising edge
+	
+	//PORTF.INTFLAGS INT0IF is flag
+	
+	
+}
+
+ISR(PORTF_INT0_vect){
+	
+	//Every time a packet is ready in the buffer of the device, we need to read it in.
+	
+ 	//PORTF.OUTTGL = 1;
+	PORTF.OUTCLR = SS_bm;
+	usartd0_out_char(spi_read());
+	usartd0_out_char(spi_read());
+	usartd0_out_char(spi_read());
+	usartd0_out_char(spi_read());
+	usartd0_out_char(spi_read());
+	usartd0_out_char(spi_read());
+	usartd0_out_char(spi_read());
+	usartd0_out_char(spi_read());
+	usartd0_out_char(spi_read());
+	usartd0_out_char(spi_read());
+	usartd0_out_char(spi_read());
+	usartd0_out_char(spi_read());
+	PORTF.OUTSET = SS_bm;
+	
+	PORTF.INTFLAGS = 1; //Reset interrupt flag
+}
+
 
 
 void tcc0_init(void)
@@ -18,46 +63,45 @@ TCC0.CTRLA = TC_CLKSEL_DIV256_gc;
 }
 
 
-void reset_module(void){
-	PORTF.OUTCLR = (RST_bm);
-	
-	TCC0.INTFLAGS = (1); //Reset the interrupt flag and then begin polling;
-	
-	while(!(TCC0.INTFLAGS & 1));
-	
-	PORTF.OUTSET = (RST_bm);
-}
-
-
 int main(void)
 {
-	
+	int_init();
 	tcc0_init(); //Initialize Timer Counter Module 0
-	PORTF.DIRSET = (RST_bm);
-	PORTF.OUTSET = (RST_bm);
-	//reset_module();
 	spi_init();
 	usartd0_init();
 	
+	PORTF.DIRSET = 1;
 	
     while(1)
     {
 		
+
 		while(!(TCC0.INTFLAGS & 1)); //Poll timer to check for overflow
 		TCC0.INTFLAGS = 1; //Reset the timer
-		usartd0_out_char(spi_read());
+		
+		//PORTF.OUTCLR = SS_bm;
+		//usartd0_out_char(spi_read());
+		//PORTF.OUTSET = SS_bm;
 		
 		//spi_write_string("ATI");
 		//usartd0_out_char(spi_read());
-		PORTF.OUTCLR = SS_bm;
 		
+		
+		PORTF.OUTCLR = SS_bm;
+	
 		spi_write(0x10);           //10-01-0A-nBytes-0byte-1byte-...-nbyte this sends to uart
-		spi_write(0x01);
+		spi_write(0x02);
 		spi_write(0x0A);
-		spi_write(0x10);
-		spi_write_string("This is a test.\n");
+		spi_write(0x00);
+		//spi_write_string("This is a test.\n");
 		
 		PORTF.OUTSET = SS_bm;
+	
+	
+		
+		
+		
+		
 
 
     }

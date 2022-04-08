@@ -1,9 +1,9 @@
 #include <avr/io.h>
 #include "usart.h"
 
-/* At 2 MHz SYSclk, 5 BSEL, -6 BSCALE corresponds to 115200 bps */
-#define BSEL     (5)
-#define BSCALE   (-6)
+/* At 2 MHz SYSclk, 12 BSEL, 0 BSCALE corresponds to 9600 bps */
+#define BSEL     (12)
+#define BSCALE   (0)
 
 
 char usartd0_in_char(void)
@@ -37,10 +37,12 @@ void usartd0_init(void)
   /* Configure remainder of serial protocol. */
   /* (In this example, a protocol with 8 data bits, ODD parity, and
    *  one stop bit is chosen.) */
-	USARTD0.CTRLC =	(USART_CMODE_ASYNCHRONOUS_gc |
+	/*USARTD0.CTRLC =	(USART_CMODE_ASYNCHRONOUS_gc |
 					 USART_PMODE_ODD_gc  	 |
 					 USART_CHSIZE_8BIT_gc)       &
-					 ~USART_SBMODE_bm;
+					 ~USART_SBMODE_bm; */
+	
+	USARTD0.CTRLC = (USART_CMODE_ASYNCHRONOUS_gc | USART_PMODE_DISABLED_gc | USART_CHSIZE_8BIT_gc) & ~USART_SBMODE_bm;
 
   /* Enable receiver and/or transmitter systems. */
 	USARTD0.CTRLB = USART_RXEN_bm | USART_TXEN_bm;
