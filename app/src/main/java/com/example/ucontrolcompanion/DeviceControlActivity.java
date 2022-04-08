@@ -158,6 +158,7 @@ public class DeviceControlActivity extends BluetoothTest {
                 List<BluetoothGattService> services = bluetoothLeService.getSupportedGattServices();
                 for (BluetoothGattService service : services)
                 {
+                    Log.w(TAG, "Service " + service.getUuid().toString());
                     if (service.getUuid().toString().equals(serviceUUID))
                     {
                         Log.w(TAG, "Service found.");
