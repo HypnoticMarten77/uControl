@@ -162,6 +162,7 @@ public class BluetoothLeService extends Service {
         public void onCharacteristicRead(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status){
             //super.onCharacteristicRead(gatt, characteristic, status);
             if(status == BluetoothGatt.GATT_SUCCESS){
+                Log.w(TAG, "Characteristic read success!!");
                 broadcastUpdate(ACTION_DATA_AVAILABLE, characteristic);
             }
         }

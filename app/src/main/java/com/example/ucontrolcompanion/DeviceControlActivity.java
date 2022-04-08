@@ -174,11 +174,13 @@ public class DeviceControlActivity extends BluetoothTest {
                 {
                     if (service.getUuid().toString().equals(serviceUUID))
                     {
+                        Log.w(TAG, "Service found.");
                         List<BluetoothGattCharacteristic> characteristics = service.getCharacteristics();
                         for (BluetoothGattCharacteristic characteristic : characteristics)
                         {
                             if (characteristic.getUuid().toString().equals(characteristicUUID))
                             {
+                                Log.w(TAG, "Characteristic found.");
                                 bluetoothLeService.readCharacteristic(characteristic);
                                 break;
                             }
