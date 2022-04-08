@@ -166,6 +166,8 @@ public class BluetoothLeService extends Service {
                 Log.w(TAG, "Characteristic read success!!");
                 broadcastUpdate(ACTION_DATA_AVAILABLE, characteristic);
             }
+            else
+                Log.w(TAG, "Characteristic read failed.");
         }
     };
 
