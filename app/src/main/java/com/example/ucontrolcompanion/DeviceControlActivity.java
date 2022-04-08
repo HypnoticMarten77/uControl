@@ -69,14 +69,15 @@ public class DeviceControlActivity extends BluetoothTest {
     private final BroadcastReceiver gattUpdateReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            final String gattStatus = intent.getAction();
-            if (BluetoothLeService.ACTION_GATT_CONNECTED.equals(gattStatus)) {
+            final String action = intent.getAction();
+            if (BluetoothLeService.ACTION_GATT_CONNECTED.equals(action)) {
                 isGattConnected = true;
                 updateConnectionState("Receiver Connected");
-            } else if (BluetoothLeService.ACTION_GATT_DISCONNECTED.equals(gattStatus)) {
+            } else if (BluetoothLeService.ACTION_GATT_DISCONNECTED.equals(action)) {
                 isGattConnected = false;
                 updateConnectionState("Receiver Disconnected");
-            } else if (BluetoothLeService.ACTION_GATT_SERVICES_DISCOVERED.equals(gattStatus)) {
+            } else if (BluetoothLeService.ACTION_GATT_SERVICES_DISCOVERED.equals(action)) {
+                Log.e(TAG, "yo we got services");
                 displayGattServices(bluetoothLeService.getSupportedGattServices());
             }
         }
