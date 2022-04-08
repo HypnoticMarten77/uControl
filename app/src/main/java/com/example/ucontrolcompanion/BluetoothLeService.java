@@ -116,7 +116,9 @@ public class BluetoothLeService extends Service {
             return;
         }else {
             Log.w(TAG, "Perms are granted, attempt to read.");
-            bluetoothGatt.readCharacteristic(characteristic);
+            boolean test = bluetoothGatt.readCharacteristic(characteristic);
+            if (test)
+                Log.w(TAG, "Read initiated.");
         }
     }
 
@@ -150,7 +152,7 @@ public class BluetoothLeService extends Service {
         }
 
         @Override
-        public void onCharacteristicWrite(BluetoothGatt gatt,BluetoothGattCharacteristic characteristic, int status){
+        public void onCharacteristicWrite(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status){
             if(status != BluetoothGatt.GATT_SUCCESS){
                 Log.e(TAG, "Characteristic Write Failed");
             }
