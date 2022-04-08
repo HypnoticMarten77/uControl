@@ -29,7 +29,7 @@ public class BluetoothLeService extends Service {
     private BluetoothGatt bluetoothGatt;
     public final static String ACTION_GATT_CONNECTED = "com.example.bluetooth.le.ACTION_GATT_CONNECTED";
     public final static String ACTION_GATT_DISCONNECTED = "com.example.bluetooth.le.ACTION_GATT_DISCONNECTED";
-    public final static String ACTION_GATT_SERVICES_DISCOVERED = "com.example.bluetooth.le.ACTION_GATT_SERVICES_DISCONNECTED";
+    public final static String ACTION_GATT_SERVICES_DISCOVERED = "com.example.bluetooth.le.ACTION_GATT_SERVICES_DISCOVERED";
     private int connectionState;
 
     @Nullable
@@ -120,6 +120,7 @@ public class BluetoothLeService extends Service {
     // Broadcast
     private void broadcastUpdate(final String action) {
         final Intent intent = new Intent(action);
+        Log.e(TAG, "Broadcasting: " + action);
         sendBroadcast(intent);
     }
 

@@ -77,7 +77,7 @@ public class DeviceControlActivity extends BluetoothTest {
                 isGattConnected = false;
                 updateConnectionState("Receiver Disconnected");
             } else if (BluetoothLeService.ACTION_GATT_SERVICES_DISCOVERED.equals(action)) {
-                Log.e(TAG, "yo we got services");
+                updateConnectionState("Services Found");
                 displayGattServices(bluetoothLeService.getSupportedGattServices());
             }
         }
