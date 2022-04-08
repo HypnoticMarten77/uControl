@@ -32,6 +32,8 @@ public class BluetoothLeService extends Service {
     public final static String ACTION_GATT_CONNECTED = "com.example.bluetooth.le.ACTION_GATT_CONNECTED";
     public final static String ACTION_GATT_DISCONNECTED = "com.example.bluetooth.le.ACTION_GATT_DISCONNECTED";
     public final static String ACTION_GATT_SERVICES_DISCOVERED = "com.example.bluetooth.le.ACTION_GATT_SERVICES_DISCOVERED";
+    public final static String ACTION_DATA_AVAILABLE = "com.example.bluetooth.le.ACTION_DATA_AVAILABLE";
+
     private int connectionState;
 
     @Nullable
@@ -104,6 +106,19 @@ public class BluetoothLeService extends Service {
         }
     }
 
+    public void readCharacteristic(BluetoothGattCharacteristic characteristic) {
+        if (bluetoothGatt == null) {
+            Log.w(TAG, "Bluetooth not Initialized");
+            return;
+        }
+        // read from remote device
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }else {
+            bluetoothGatt.readCharacteristic(characteristic);
+        }
+    }
+
     // GATT Callback
     private final BluetoothGattCallback bluetoothGattCallback = new BluetoothGattCallback() {
         @Override
@@ -141,6 +156,14 @@ public class BluetoothLeService extends Service {
             // Value of characteristic represents the value reported by remote device
             Log.w(TAG, "Characteristic Write Success!!");
 
+        }
+
+        @Override
+        public void onCharacteristicRead(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status){
+            //super.onCharacteristicRead(gatt, characteristic, status);
+            if(status == BluetoothGatt.GATT_SUCCESS){
+                broadcastUpdate(ACTION_DATA_AVAILABLE);
+            }
         }
     };
 
