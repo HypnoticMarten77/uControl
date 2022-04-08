@@ -29,6 +29,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UControlCompanion">
         <activity
+            android:name=".DeviceControlActivity"
+            android:exported="false" />
+        <activity
             android:name=".DeviceScanActivity"
             android:exported="false" />
         <activity
