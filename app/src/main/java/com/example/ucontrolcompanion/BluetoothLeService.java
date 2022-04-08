@@ -6,8 +6,10 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCallback;
+import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
 import android.bluetooth.BluetoothProfile;
+import android.bluetooth.BluetoothStatusCodes;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Binder;
@@ -87,6 +89,21 @@ public class BluetoothLeService extends Service {
         }
     }
 
+    // Function to write a characteristic to remote device
+    public int writeCharacteristic(BluetoothGattCharacteristic characteristic, byte[] value, int writeType) {
+        if (bluetoothGatt == null) {
+            Log.w(TAG, "Bluetooth not Initialized");
+            return BluetoothStatusCodes.ERROR_BLUETOOTH_NOT_ENABLED;
+        }
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+            return BluetoothStatusCodes.ERROR_MISSING_BLUETOOTH_CONNECT_PERMISSION;
+        } else {
+            characteristic.setValue(value);
+            bluetoothGatt.writeCharacteristic(characteristic);
+            return BluetoothStatusCodes.SUCCESS;
+        }
+    }
+
     // GATT Callback
     private final BluetoothGattCallback bluetoothGattCallback = new BluetoothGattCallback() {
         @Override
@@ -114,6 +131,16 @@ public class BluetoothLeService extends Service {
             } else {
                 Log.w(TAG, "onServicesDiscovered received: " + status);
             }
+        }
+
+        @Override
+        public void onCharacteristicWrite(BluetoothGatt gatt,BluetoothGattCharacteristic characteristic, int status){
+            if(status != BluetoothGatt.GATT_SUCCESS){
+                Log.e(TAG, "Characteristic Write Failed");
+            }
+            // Value of characteristic represents the value reported by remote device
+            Log.w(TAG, "Characteristic Write Success!!");
+
         }
     };
 
