@@ -84,7 +84,7 @@ public class DeviceControlActivity extends BluetoothTest {
 
     private void displayGattServices(List<BluetoothGattService> gattServices) {
         if (gattServices == null) {
-            Toast.makeText(DeviceControlActivity.this, "No services found.", Toast.LENGTH_SHORT).show();
+            Log.e(TAG, "No services found.");
             return;
         }
         for (BluetoothGattService gattService : gattServices) {
