@@ -28,8 +28,8 @@ public class DeviceControlActivity extends BluetoothTest {
     private TextView connectionState, dataValue;
     private static final String address = "F1:ED:88:DE:69:1C";
     private static final String TAG = "BluetoothLeService";
-    private static final String serviceUUID = "6e400001-b5a3-f393-e0A9-e50e24dcca9e";
-    private static final String characteristicUUID = "6e400003-b5a3-f393-e0A9-e50e24dcca9e";
+    private static final String serviceUUID = "6e400001-b5a3-f393-e0a9-e50e24dcca9e";
+    private static final String characteristicUUID = "6e400002-b5a3-f393-e0a9-e50e24dcca9e";
 
     private ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
