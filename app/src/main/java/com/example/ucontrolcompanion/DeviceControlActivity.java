@@ -46,14 +46,17 @@ public class DeviceControlActivity extends BluetoothTest {
         public void onServiceConnected(ComponentName componentName, IBinder service) {
             bluetoothLeService = ((BluetoothLeService.LocalBinder) service).getService();
             if (bluetoothLeService != null) {
+                if (!bluetoothLeService.initialize()) {
+                    Log.e(TAG, "Unable to initialize Bluetooth.");
+                }
                 // Assume Bluetooth Adapter is initialized and ready to connect
-                Toast.makeText(DeviceControlActivity.this, "Adapter ready to connect.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(DeviceControlActivity.this, "Adapter ready to connect.", Toast.LENGTH_SHORT).show();
                 // Connect to device with address: F1:ED:88:DE:69:1C
                 bluetoothLeService.connect(address);
 
             }
-            else
-                Toast.makeText(DeviceControlActivity.this, "Adapter is NOT ready to connect.", Toast.LENGTH_SHORT).show();
+            //else
+                //Toast.makeText(DeviceControlActivity.this, "Adapter is NOT ready to connect.", Toast.LENGTH_SHORT).show();
         }
 
         @Override
@@ -85,11 +88,11 @@ public class DeviceControlActivity extends BluetoothTest {
             return;
         }
         for (BluetoothGattService gattService : gattServices) {
-            Toast.makeText(DeviceControlActivity.this, "S UUID: " + gattService.getUuid().toString(), Toast.LENGTH_LONG).show();
+            Log.w(TAG, "Service UUID: " + gattService.getUuid().toString());
             List<BluetoothGattCharacteristic> gattCharacteristics = gattService.getCharacteristics();
             for (BluetoothGattCharacteristic gattCharacteristic : gattCharacteristics)
             {
-                Toast.makeText(DeviceControlActivity.this, "C UUID: " + gattCharacteristic.getUuid().toString(), Toast.LENGTH_LONG).show();
+                Log.w(TAG, "Characteristic UUID: " + gattCharacteristic.getUuid().toString());
             }
         }
     }
@@ -141,4 +144,3 @@ public class DeviceControlActivity extends BluetoothTest {
         bindService(gattServiceIntent, serviceConnection, Context.BIND_AUTO_CREATE);
     }
 }
-

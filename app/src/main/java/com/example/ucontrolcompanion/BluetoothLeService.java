@@ -44,6 +44,15 @@ public class BluetoothLeService extends Service {
         return super.onUnbind(intent);
     }
 
+    public boolean initialize() {
+        bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        if (bluetoothAdapter == null) {
+            Log.e(TAG, "Unable to obtain a BluetoothAdapter.");
+            return false;
+        }
+        return true;
+    }
+
     private void close() {
         if (bluetoothGatt == null) {
             return;
@@ -58,8 +67,8 @@ public class BluetoothLeService extends Service {
 
     // Function to connect to device with address
     public boolean connect(final String address) {
-        if (bluetoothAdapter == null | address == null) {
-            Log.w(TAG, "BluetoothAdapter not initialized or unspecified address.");
+        if (bluetoothAdapter == null || address == null) {
+            Log.w(TAG, "BluetoothAdapter not initialized or address invalid.");
             return false;
         }
         try {
