@@ -67,8 +67,8 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/readBtn"
+        android:id="@+id/actionBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Read Data" />
+        android:text="Write E" />
 </LinearLayout>

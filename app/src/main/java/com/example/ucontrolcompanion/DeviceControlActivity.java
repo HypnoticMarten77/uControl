@@ -1,28 +1,15 @@
 package com.example.ucontrolcompanion;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
-import android.Manifest;
-import android.app.Service;
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothGatt;
-import android.bluetooth.BluetoothGattCallback;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
-import android.bluetooth.BluetoothProfile;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
-import android.content.pm.PackageManager;
-import android.os.Binder;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
@@ -31,8 +18,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class DeviceControlActivity extends BluetoothTest {
@@ -44,7 +29,7 @@ public class DeviceControlActivity extends BluetoothTest {
     private static final String address = "F1:ED:88:DE:69:1C";
     private static final String TAG = "BluetoothLeService";
     private static final String serviceUUID = "6e400001-b5a3-f393-e0A9-e50e24dcca9e";
-    private static final String characteristicUUID = "6e400003-b5a3-f393-e0A9-e50e24dcca9e";
+    private static final String characteristicUUID = "6e400002-b5a3-f393-e0A9-e50e24dcca9e";
 
     private ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
@@ -165,7 +150,7 @@ public class DeviceControlActivity extends BluetoothTest {
         Intent gattServiceIntent = new Intent(this, BluetoothLeService.class);
         bindService(gattServiceIntent, serviceConnection, Context.BIND_AUTO_CREATE);
 
-        readBtn = (Button) findViewById(R.id.readBtn);
+        readBtn = (Button) findViewById(R.id.actionBtn);
         readBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -181,7 +166,9 @@ public class DeviceControlActivity extends BluetoothTest {
                             if (characteristic.getUuid().toString().equals(characteristicUUID))
                             {
                                 Log.w(TAG, "Characteristic found.");
-                                bluetoothLeService.readCharacteristic(characteristic);
+                                byte[] testChar = new byte[1];
+                                testChar[0] = 'E';
+                                bluetoothLeService.writeCharacteristic(characteristic, testChar, 2);
                                 break;
                             }
                         }
