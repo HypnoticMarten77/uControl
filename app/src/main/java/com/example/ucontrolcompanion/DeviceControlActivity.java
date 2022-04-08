@@ -70,6 +70,7 @@ public class DeviceControlActivity extends BluetoothTest {
         @Override
         public void onReceive(Context context, Intent intent) {
             final String action = intent.getAction();
+            Log.e(TAG, "Action: " + action);
             if (BluetoothLeService.ACTION_GATT_CONNECTED.equals(action)) {
                 isGattConnected = true;
                 updateConnectionState("Receiver Connected");

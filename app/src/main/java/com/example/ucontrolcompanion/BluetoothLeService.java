@@ -120,7 +120,6 @@ public class BluetoothLeService extends Service {
     // Broadcast
     private void broadcastUpdate(final String action) {
         final Intent intent = new Intent(action);
-        Log.e(TAG, "Broadcasting: " + action);
         sendBroadcast(intent);
     }
 
