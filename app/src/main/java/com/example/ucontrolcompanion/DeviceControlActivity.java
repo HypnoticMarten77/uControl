@@ -150,10 +150,11 @@ public class DeviceControlActivity extends BluetoothTest {
         Intent gattServiceIntent = new Intent(this, BluetoothLeService.class);
         bindService(gattServiceIntent, serviceConnection, Context.BIND_AUTO_CREATE);
 
-        readBtn = (Button) findViewById(R.id.actionBtn);
+        readBtn = (Button) findViewById(R.id.readBtn);
         readBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.w(TAG, "Getting services...");
                 List<BluetoothGattService> services = bluetoothLeService.getSupportedGattServices();
                 for (BluetoothGattService service : services)
                 {

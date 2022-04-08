@@ -67,7 +67,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/actionBtn"
+        android:id="@+id/readBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Write E" />
