@@ -32,40 +32,20 @@ void reset_module(void){
 int main(void)
 {
 	
-	tcc0_init();
-	
+	tcc0_init(); //Initialize Timer Counter Module 0
 	PORTF.DIRSET = (RST_bm);
 	PORTF.OUTSET = (RST_bm);
-	
-	reset_module();
-	
-	
-	
+	//reset_module();
 	spi_init();
 	usartd0_init();
-	
-		//const char * command  = "AT";
-		
-		//spi_write_string(command);
-		
-		//reset_module();
-		
-		//usartd0_out_string("Sent command: ");
-		//usartd0_out_string(command);
-		//usartd0_out_string("\r\n");
-		
-		
-		
-		//usartd0_out_char(spi_read());
-	
 	
 	
     while(1)
     {
 		
-		//while(!(TCC0.INTFLAGS & 1)); //Poll timer to check for overflow
-		//TCC0.INTFLAGS = 1; //Reset the timer
-		//usartd0_out_char(spi_read());
+		while(!(TCC0.INTFLAGS & 1)); //Poll timer to check for overflow
+		TCC0.INTFLAGS = 1; //Reset the timer
+		usartd0_out_char(spi_read());
 		
 		//spi_write_string("ATI");
 		//usartd0_out_char(spi_read());
@@ -74,23 +54,11 @@ int main(void)
 		spi_write(0x10);           //10-01-0A-nBytes-0byte-1byte-...-nbyte this sends to uart
 		spi_write(0x01);
 		spi_write(0x0A);
-		spi_write(0x03);
-		spi_write_string("Poo");
+		spi_write(0x10);
+		spi_write_string("This is a test.\n");
 		
 		PORTF.OUTSET = SS_bm;
-		
-		//PORTF.OUTCLR = SS_bm;
-// 		usartd0_out_char(spi_read());
-// 		usartd0_out_char(spi_read());
-// 		usartd0_out_char(spi_read());
-// 		usartd0_out_char(spi_read());
-// 		usartd0_out_char(spi_read());
-// 		usartd0_out_char(spi_read());
-// 		usartd0_out_char(spi_read());
-// 		PORTF.OUTSET = SS_bm;
-		
-		//usartd0_out_char(SPIF.DATA);
-		
+
 
     }
 }

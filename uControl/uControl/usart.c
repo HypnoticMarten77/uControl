@@ -1,31 +1,10 @@
-/*------------------------------------------------------------------------------
-  usart.c --
-  
-  Description:
-    Provides some useful definitions regarding the USART system of the
-    ATxmega128A1U.
-  
-  Author(s): Dr. Eric Schwartz, Christopher Crary, Wesley Piard
-  Last modified by: Christopher Crary
-  Last modified on: 17 July 2020
-------------------------------------------------------------------------------*/
-
-/********************************DEPENDENCIES**********************************/
-
 #include <avr/io.h>
 #include "usart.h"
-
-/*****************************END OF DEPENDENCIES******************************/
-
-/***********************************MACROS*************************************/
 
 /* At 2 MHz SYSclk, 5 BSEL, -6 BSCALE corresponds to 115200 bps */
 #define BSEL     (5)
 #define BSCALE   (-6)
 
-/********************************END OF MACROS*********************************/
-
-/*****************************FUNCTION DEFINITIONS*****************************/
 
 char usartd0_in_char(void)
 {
@@ -89,5 +68,3 @@ void usartd0_out_string(const char * str)
 		 usartd0_out_char(*(str++));
 	}
 }
-
-/***************************END OF FUNCTION DEFINITIONS************************/
