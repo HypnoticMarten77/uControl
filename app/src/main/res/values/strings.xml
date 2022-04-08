@@ -11,4 +11,9 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_bluetooth">activity_bluetooth</string>
     <string name="unknown_device">Unknown Device</string>
+    <string name="label_device_address">Device Address:</string>
+    <string name="label_state">"State: "</string>
+    <string name="disconnected">Disconnected</string>
+    <string name="label_data">"Data: "</string>
+    <string name="no_data">No Data</string>
 </resources>

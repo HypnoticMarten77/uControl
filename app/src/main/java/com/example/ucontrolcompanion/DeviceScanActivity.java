@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 public class DeviceScanActivity extends BluetoothTest {
 
-    private Button startBtn;
+    private Button startBtn, connectBtn;
     private BluetoothLeScanner bluetoothLeScanner = btAdapter.getBluetoothLeScanner();
     private boolean scanning;
     private Handler handler = new Handler();
@@ -45,6 +45,21 @@ public class DeviceScanActivity extends BluetoothTest {
                     scanLeDevice();
                 else
                     Toast.makeText(DeviceScanActivity.this, "Scan perm not granted.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        connectBtn = (Button) findViewById(R.id.connectBtn);
+        connectBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkPermission(Manifest.permission.BLUETOOTH_CONNECT, BT_CONNECT_PERM_CODE);
+                if (permConnect)
+                {
+                    Intent myIntent = new Intent(DeviceScanActivity.this, DeviceControlActivity.class);
+                    startActivityForResult(myIntent, 0);
+                }
+                else
+                    Toast.makeText(DeviceScanActivity.this, "Please give BT connect perm.", Toast.LENGTH_SHORT).show();
             }
         });
     }
