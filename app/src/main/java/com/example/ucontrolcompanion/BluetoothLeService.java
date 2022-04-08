@@ -115,6 +115,7 @@ public class BluetoothLeService extends Service {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
             return;
         }else {
+            Log.w(TAG, "Perms are granted, attempt to read.");
             bluetoothGatt.readCharacteristic(characteristic);
         }
     }
