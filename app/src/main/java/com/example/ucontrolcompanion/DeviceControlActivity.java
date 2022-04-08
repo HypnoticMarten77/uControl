@@ -26,6 +26,8 @@ import android.os.Binder;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,11 +37,14 @@ import java.util.List;
 
 public class DeviceControlActivity extends BluetoothTest {
 
+    private Button readBtn;
     private BluetoothLeService bluetoothLeService;
     private boolean isGattConnected;
-    private TextView connectionState;
+    private TextView connectionState, dataValue;
     private static final String address = "F1:ED:88:DE:69:1C";
     private static final String TAG = "BluetoothLeService";
+    private static final String serviceUUID = "6e400001-b5a3-f393-e0A9-e50e24dcca9e";
+    private static final String characteristicUUID = "6e400003-b5a3-f393-e0A9-e50e24dcca9e";
 
     private ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
@@ -70,6 +75,7 @@ public class DeviceControlActivity extends BluetoothTest {
         @Override
         public void onReceive(Context context, Intent intent) {
             final String action = intent.getAction();
+            final String data = intent.getStringExtra("DATA");
             Log.e(TAG, "Action: " + action);
             if (BluetoothLeService.ACTION_GATT_CONNECTED.equals(action)) {
                 isGattConnected = true;
@@ -80,6 +86,8 @@ public class DeviceControlActivity extends BluetoothTest {
             } else if (BluetoothLeService.ACTION_GATT_SERVICES_DISCOVERED.equals(action)) {
                 updateConnectionState("Services Found");
                 displayGattServices(bluetoothLeService.getSupportedGattServices());
+            } else if (BluetoothLeService.ACTION_DATA_AVAILABLE.equals(action)) {
+                updateDataValue(data);
             }
         }
     };
@@ -121,6 +129,7 @@ public class DeviceControlActivity extends BluetoothTest {
         intentFilter.addAction(BluetoothLeService.ACTION_GATT_CONNECTED);
         intentFilter.addAction(BluetoothLeService.ACTION_GATT_DISCONNECTED);
         intentFilter.addAction(BluetoothLeService.ACTION_GATT_SERVICES_DISCOVERED);
+        intentFilter.addAction(BluetoothLeService.ACTION_DATA_AVAILABLE);
         return intentFilter;
     }
 
@@ -133,6 +142,15 @@ public class DeviceControlActivity extends BluetoothTest {
         });
     }
 
+    private void updateDataValue(final String value) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                dataValue.setText(value);
+            }
+        });
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -140,10 +158,35 @@ public class DeviceControlActivity extends BluetoothTest {
 
         // Set UI references
         connectionState = (TextView) findViewById(R.id.connection_state);
+        dataValue = (TextView) findViewById(R.id.data_value);
 
         // We start service using bindService
         // ServiceConnection listens for connection/disconnection
         Intent gattServiceIntent = new Intent(this, BluetoothLeService.class);
         bindService(gattServiceIntent, serviceConnection, Context.BIND_AUTO_CREATE);
+
+        readBtn = (Button) findViewById(R.id.readBtn);
+        readBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                List<BluetoothGattService> services = bluetoothLeService.getSupportedGattServices();
+                for (BluetoothGattService service : services)
+                {
+                    if (service.getUuid().toString().equals(serviceUUID))
+                    {
+                        List<BluetoothGattCharacteristic> characteristics = service.getCharacteristics();
+                        for (BluetoothGattCharacteristic characteristic : characteristics)
+                        {
+                            if (characteristic.getUuid().toString().equals(characteristicUUID))
+                            {
+                                bluetoothLeService.readCharacteristic(characteristic);
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                }
+            }
+        });
     }
 }

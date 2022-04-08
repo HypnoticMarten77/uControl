@@ -126,7 +126,7 @@ public class BluetoothLeService extends Service {
             if (newState == BluetoothProfile.STATE_CONNECTED) {
                 // Successfully connected to the GATT Server
                 connectionState = 2;
-                broadcastUpdate(ACTION_GATT_CONNECTED);
+                broadcastUpdate(ACTION_GATT_CONNECTED, null);
                 // Attempts to discover services after successful connection
                 if (ActivityCompat.checkSelfPermission(BluetoothLeService.this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
                     return;
@@ -135,14 +135,14 @@ public class BluetoothLeService extends Service {
             } else if (newState == BluetoothProfile.STATE_DISCONNECTED) {
                 // Disconnected from the GATT Server
                 connectionState = 0;
-                broadcastUpdate(ACTION_GATT_DISCONNECTED);
+                broadcastUpdate(ACTION_GATT_DISCONNECTED, null);
             }
         }
 
         @Override
         public void onServicesDiscovered(BluetoothGatt gatt, int status) {
             if (status == BluetoothGatt.GATT_SUCCESS) {
-                broadcastUpdate(ACTION_GATT_SERVICES_DISCOVERED);
+                broadcastUpdate(ACTION_GATT_SERVICES_DISCOVERED, null);
             } else {
                 Log.w(TAG, "onServicesDiscovered received: " + status);
             }
@@ -162,14 +162,16 @@ public class BluetoothLeService extends Service {
         public void onCharacteristicRead(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status){
             //super.onCharacteristicRead(gatt, characteristic, status);
             if(status == BluetoothGatt.GATT_SUCCESS){
-                broadcastUpdate(ACTION_DATA_AVAILABLE);
+                broadcastUpdate(ACTION_DATA_AVAILABLE, characteristic);
             }
         }
     };
 
     // Broadcast
-    private void broadcastUpdate(final String action) {
+    private void broadcastUpdate(final String action, BluetoothGattCharacteristic characteristic) {
         final Intent intent = new Intent(action);
+        final byte[] data = characteristic.getValue();
+        intent.putExtra("DATA", data.toString());
         sendBroadcast(intent);
     }
 
