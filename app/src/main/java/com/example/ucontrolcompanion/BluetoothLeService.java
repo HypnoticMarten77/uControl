@@ -116,9 +116,8 @@ public class BluetoothLeService extends Service {
             return;
         }else {
             Log.w(TAG, "Perms are granted, attempt to read.");
-            boolean test = bluetoothGatt.readCharacteristic(characteristic);
-            if (test)
-                Log.w(TAG, "Read initiated.");
+            if (!bluetoothGatt.readCharacteristic(characteristic));
+                Log.e(TAG, "Failed to read characteristic " + characteristic.toString());
         }
     }
 
