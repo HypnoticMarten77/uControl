@@ -26,7 +26,7 @@ public class DeviceControlActivity extends BluetoothTest {
     private BluetoothLeService bluetoothLeService;
     private boolean isGattConnected;
     private TextView connectionState, dataValue;
-    private static final String address = "F1:ED:88:DE:69:1C";
+    private String address;
     private static final String TAG = "BluetoothLeService";
     private static final String serviceUUID = "6e400001-b5a3-f393-e0a9-e50e24dcca9e";
     private static final String characteristicUUID = "6e400002-b5a3-f393-e0a9-e50e24dcca9e";
@@ -148,6 +148,8 @@ public class DeviceControlActivity extends BluetoothTest {
         // Set UI references
         connectionState = (TextView) findViewById(R.id.connection_state);
         dataValue = (TextView) findViewById(R.id.data_value);
+        address = savedInstanceState.getString("Address");
+        Log.w(TAG, "Passed in address: " + address);
 
         // We start service using bindService
         // ServiceConnection listens for connection/disconnection

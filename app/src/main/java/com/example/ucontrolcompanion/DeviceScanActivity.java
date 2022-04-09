@@ -29,6 +29,7 @@ public class DeviceScanActivity extends BluetoothTest {
     private BluetoothLeScanner bluetoothLeScanner = btAdapter.getBluetoothLeScanner();
     private boolean scanning;
     private Handler handler = new Handler();
+    private String address;
     // Stops scanning after 10 seconds
     private static final long SCAN_PERIOD = 10000;
 
@@ -58,6 +59,7 @@ public class DeviceScanActivity extends BluetoothTest {
                 {
                     //Log.w("1","Test");
                     Intent myIntent = new Intent(DeviceScanActivity.this, DeviceControlActivity.class);
+                    myIntent.putExtra("Address", address);
                     startActivityForResult(myIntent, 0);
                 }
                 else
@@ -96,8 +98,10 @@ public class DeviceScanActivity extends BluetoothTest {
             super.onScanResult(callbackType, result);
             checkPermission(Manifest.permission.BLUETOOTH, BT_PERM_CODE);
             Log.w("Scanner", result.getDevice().getName());
-            if (result.getDevice().getName() != null && result.getDevice().getName().contains("Adafruit"))
+            if (result.getDevice().getName() != null && result.getDevice().getName().contains("Adafruit")) {
                 Toast.makeText(DeviceScanActivity.this, "Address: " + result.getDevice().getAddress(), Toast.LENGTH_LONG).show();
+                address = result.getDevice().getAddress();
+            }
         }
     };
 }
