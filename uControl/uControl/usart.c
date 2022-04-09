@@ -20,7 +20,7 @@ char usartd0_in_char(void)
 
 void usartd0_in_string(char * buf)
 {
-  /* intentionally left blank */
+  //Not really going to implement this since we are not reading serial data, only using UART for logging/debugging
 }
 
 void usartd0_init(void)

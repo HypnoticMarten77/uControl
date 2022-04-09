@@ -2,43 +2,55 @@
 #include <avr/interrupt.h>
 #include <xc.h>
 
-
-#define SS_bm     (1<<4)
+//DEFINE BITMASKS
+#define SS_bm   (1<<4)
 #define IRQ_bm	(1<<3)
-
 
 
 void int_init(void)
 {
 	//Enable low level interrupts
 	PMIC.CTRL = PMIC_LOLVLEN_bm;
+	
 	//Enable global interrupts
 	sei();
-	PORTF.DIRCLR = IRQ_bm; //Make input
+	
+	//Set the interrupt pin as an input and de-assert it for initialization.
+	PORTF.DIRCLR = IRQ_bm;
 	PORTF.OUTCLR = IRQ_bm;
-	PORTF.INTCTRL = 0x01; //Low level interrupts on PORTF
-	PORTF.INT0MASK = IRQ_bm; //PIN3 Interrupt enable
-	PORTF.PIN3CTRL = PORT_ISC_RISING_gc; //Sense only on rising edge
 	
-	//PORTF.INTFLAGS INT0IF is flag
+	//Low level interrupts on PORTF
+	PORTF.INTCTRL = 0x01;
 	
+	//PIN3 Interrupt enable
+	PORTF.INT0MASK = IRQ_bm; 
+	
+	//Sense interrupts only on rising edge
+	PORTF.PIN3CTRL = PORT_ISC_RISING_gc;
+	
+	//PORTF.INTFLAGS INT0IF is interrupt0 flag for PORTF
 	
 }
 
+//Interrupt Service Routine for PORTF Interrupt0 on PIN3
 ISR(PORTF_INT0_vect){
 	
 	//Every time a packet is ready in the buffer of the device, we need to read it in.
-	
- 	//PORTF.OUTTGL = 1;
 	PORTF.OUTCLR = SS_bm;
 	spi_read();
 	spi_read();
 	spi_read();
 	
-	usartd0_out_string("Bytes received: ");
 
 
 	uint8_t num_bytes = spi_read();
+	
+	//Only display if we have actually received new data.
+	//Careful, do not flood the transmission with more than 13 bytes, otherwise it breaks.
+	
+	if(num_bytes){
+	
+	usartd0_out_string("Bytes received: ");
 	usartd0_out_int(num_bytes);
 	usartd0_out_char(' ');
 	
@@ -49,9 +61,10 @@ ISR(PORTF_INT0_vect){
 	
 	
 	
-	PORTF.OUTSET = SS_bm;
-	
 	usartd0_out_char('\n');
+	
+	}
+	PORTF.OUTSET = SS_bm;
 	
 	PORTF.INTFLAGS = 1; //Reset interrupt flag
 }
@@ -60,11 +73,8 @@ ISR(PORTF_INT0_vect){
 
 void tcc0_init(void)
 {
-//Load digital period (0.25secs)*(2MHz/8) = 62500; 4Hz
+//Load digital period (1sec1)*(2MHz/256) = 7812; 1Hz period calculation
 TCC0.PER = 7812;
-
-//CH0 Event trigger on overflow
-//EVSYS_CH0MUX = EVSYS_CHMUX_TCC0_OVF_gc;
 
 //Load prescaler to start the timer prescaler of 8
 TCC0.CTRLA = TC_CLKSEL_DIV256_gc;
@@ -73,40 +83,43 @@ TCC0.CTRLA = TC_CLKSEL_DIV256_gc;
 
 int main(void)
 {
+	//Initialize Interrupts
 	int_init();
-	tcc0_init(); //Initialize Timer Counter Module 0
-	spi_init();
-	usartd0_init();
 	
-	PORTF.DIRSET = 1;
+	//Initialize Timer/Counter Module 0
+	tcc0_init();
+	
+	//Initialize SPI Module
+	spi_init();
+	
+	//Initialize UART Module 0
+	usartd0_init();
 	
     while(1)
     {
 		
-
+		//1 SECOND DELAY SO THE UART DEBUG CONSOLE IS NOT FLOODED
 		while(!(TCC0.INTFLAGS & 1)); //Poll timer to check for overflow
-		TCC0.INTFLAGS = 1; //Reset the timer
+		TCC0.INTFLAGS = 1; //Clear the Flag
 		
-		//PORTF.OUTCLR = SS_bm;
-		//usartd0_out_char(spi_read());
-		//PORTF.OUTSET = SS_bm;
-		
-		//spi_write_string("ATI");
-		//usartd0_out_char(spi_read());
-		
-		
+		//Read the buffer to tell the module to send an interrupt when there is new data in the buffer.
 		PORTF.OUTCLR = SS_bm;
-	
-		spi_write(0x10);           //10-01-0A-nBytes-0byte-1byte-...-nbyte this sends to uart
+		spi_write(0x10);
 		spi_write(0x02);
 		spi_write(0x0A);
 		spi_write(0x00);
-		//spi_write_string("This is a test.\n");
-		
 		PORTF.OUTSET = SS_bm;
 	
+
+		/*--------------TRANSMISSION EXAMPLE--------------*/
 	
-		
+		//PORTF.OUTCLR = SS_bm;
+		//spi_write(0x10);           //10-01-0A-nBytes-0byte-1byte-...-nbyte this sends to uart
+		//spi_write(0x01);
+		//spi_write(0x0A);
+		//spi_write(0x10);
+		//spi_write_string("This is a test.\n");
+		//PORTF.OUTSET = SS_bm;
 		
 		
 		

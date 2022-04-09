@@ -356,12 +356,12 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000     0x5bca
+.debug_info     0x0000000000000000     0x5c14
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x0000000000000000     0x3e5a C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.2.141/xc8/avr/lib/avrxmega7/memx-const/crtatxmega128a1u.o
- .debug_info    0x0000000000003e5a      0xefb main.o
- .debug_info    0x0000000000004d55      0x67d spi.o
- .debug_info    0x00000000000053d2      0x7f8 usart.o
+ .debug_info    0x0000000000003e5a      0xf45 main.o
+ .debug_info    0x0000000000004d9f      0x67d spi.o
+ .debug_info    0x000000000000541c      0x7f8 usart.o
 
 .debug_abbrev   0x0000000000000000     0x3f07
  *(.debug_abbrev)
@@ -370,12 +370,12 @@ END GROUP
  .debug_abbrev  0x0000000000003ca4      0x11e spi.o
  .debug_abbrev  0x0000000000003dc2      0x145 usart.o
 
-.debug_line     0x0000000000000000      0x8f6
+.debug_line     0x0000000000000000      0x903
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x0000000000000000      0x3b8 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.2.141/xc8/avr/lib/avrxmega7/memx-const/crtatxmega128a1u.o
- .debug_line    0x00000000000003b8      0x211 main.o
- .debug_line    0x00000000000005c9      0x173 spi.o
- .debug_line    0x000000000000073c      0x1ba usart.o
+ .debug_line    0x00000000000003b8      0x21e main.o
+ .debug_line    0x00000000000005d6      0x173 spi.o
+ .debug_line    0x0000000000000749      0x1ba usart.o
 
 .debug_frame    0x0000000000000000      0x198
  *(.debug_frame)
@@ -431,200 +431,200 @@ LOAD data_init
  .note.gnu.avr.deviceinfo
                 0x0000000000000000       0x40 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.2.141/xc8/avr/lib/avrxmega7/memx-const/crtatxmega128a1u.o
 
-.progmemx.data  0x0000000000000220       0x11
+.progmemx.data  0x0000000000000220       0x2f
  .progmemx.data
-                0x0000000000000220       0x11 main.o
+                0x0000000000000220       0x2f main.o
 
 .text.__vector_104
-                0x0000000000000232       0xde
+                0x0000000000000250       0xf4
  .text.__vector_104
-                0x0000000000000232       0xde main.o
-                0x0000000000000232                __vector_104
+                0x0000000000000250       0xf4 main.o
+                0x0000000000000250                __vector_104
 
-.text.main      0x0000000000000310       0x50
- .text.main     0x0000000000000310       0x50 main.o
-                0x0000000000000310                main
+.text.main      0x0000000000000344       0x4a
+ .text.main     0x0000000000000344       0x4a main.o
+                0x0000000000000344                main
 
 .text.usartd0_out_string
-                0x0000000000000360       0x2e
+                0x000000000000038e       0x2e
  .text.usartd0_out_string
-                0x0000000000000360       0x2e usart.o
-                0x0000000000000360                usartd0_out_string
+                0x000000000000038e       0x2e usart.o
+                0x000000000000038e                usartd0_out_string
 
 .text.usartd0_init
-                0x000000000000038e       0x22
+                0x00000000000003bc       0x22
  .text.usartd0_init
-                0x000000000000038e       0x22 usart.o
-                0x000000000000038e                usartd0_init
+                0x00000000000003bc       0x22 usart.o
+                0x00000000000003bc                usartd0_init
 
-.text.int_init  0x00000000000003b0       0x1a
+.text.int_init  0x00000000000003de       0x1a
  .text.int_init
-                0x00000000000003b0       0x1a main.o
-                0x00000000000003b0                int_init
+                0x00000000000003de       0x1a main.o
+                0x00000000000003de                int_init
 
-.text.spi_init  0x00000000000003ca       0x18
+.text.spi_init  0x00000000000003f8       0x18
  .text.spi_init
-                0x00000000000003ca       0x18 spi.o
-                0x00000000000003ca                spi_init
+                0x00000000000003f8       0x18 spi.o
+                0x00000000000003f8                spi_init
 
-.text.spi_read  0x00000000000003e2       0x14
+.text.spi_read  0x0000000000000410       0x14
  .text.spi_read
-                0x00000000000003e2       0x14 spi.o
-                0x00000000000003e2                spi_read
+                0x0000000000000410       0x14 spi.o
+                0x0000000000000410                spi_read
 
 .text.tcc0_init
-                0x00000000000003f6       0x12
+                0x0000000000000424       0x12
  .text.tcc0_init
-                0x00000000000003f6       0x12 main.o
-                0x00000000000003f6                tcc0_init
+                0x0000000000000424       0x12 main.o
+                0x0000000000000424                tcc0_init
 
 .text.usartd0_out_int
-                0x0000000000000408       0x10
+                0x0000000000000436       0x10
  .text.usartd0_out_int
-                0x0000000000000408       0x10 usart.o
-                0x0000000000000408                usartd0_out_int
+                0x0000000000000436       0x10 usart.o
+                0x0000000000000436                usartd0_out_int
 
-.text.libgcc    0x0000000000000418       0x10
- .text.libgcc   0x0000000000000418       0x10 c:/program files/microchip/xc8/v2.31/avr/bin/../lib/gcc/avr/5.4.0/avrxmega7/memx-const\libgcc.a(_xload_1.o)
-                0x0000000000000418                __xload_1
+.text.libgcc    0x0000000000000446       0x10
+ .text.libgcc   0x0000000000000446       0x10 c:/program files/microchip/xc8/v2.31/avr/bin/../lib/gcc/avr/5.4.0/avrxmega7/memx-const\libgcc.a(_xload_1.o)
+                0x0000000000000446                __xload_1
 
 .text.spi_write
-                0x0000000000000428        0xe
+                0x0000000000000456        0xe
  .text.spi_write
-                0x0000000000000428        0xe spi.o
-                0x0000000000000428                spi_write
+                0x0000000000000456        0xe spi.o
+                0x0000000000000456                spi_write
 
 .text.usartd0_out_char
-                0x0000000000000436        0xe
+                0x0000000000000464        0xe
  .text.usartd0_out_char
-                0x0000000000000436        0xe usart.o
-                0x0000000000000436                usartd0_out_char
+                0x0000000000000464        0xe usart.o
+                0x0000000000000464                usartd0_out_char
 
-.text           0x0000000000000444        0x4
- .text          0x0000000000000444        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.2.141/xc8/avr/lib/avrxmega7/memx-const/crtatxmega128a1u.o
-                0x0000000000000444                __vector_38
-                0x0000000000000444                __vector_22
-                0x0000000000000444                __vector_63
-                0x0000000000000444                __vector_28
-                0x0000000000000444                __vector_67
-                0x0000000000000444                __vector_1
-                0x0000000000000444                __vector_119
-                0x0000000000000444                __vector_32
-                0x0000000000000444                __vector_75
-                0x0000000000000444                __vector_71
-                0x0000000000000444                __vector_91
-                0x0000000000000444                __vector_34
-                0x0000000000000444                __vector_62
-                0x0000000000000444                __vector_77
-                0x0000000000000444                __vector_102
-                0x0000000000000444                __vector_24
-                0x0000000000000444                __vector_12
-                0x0000000000000444                __vector_55
-                0x0000000000000444                __vector_69
-                0x0000000000000444                __vector_81
-                0x0000000000000444                __vector_90
-                0x0000000000000444                __vector_46
-                0x0000000000000444                __bad_interrupt
-                0x0000000000000444                __vector_122
-                0x0000000000000444                __vector_72
-                0x0000000000000444                __vector_114
-                0x0000000000000444                __vector_6
-                0x0000000000000444                __vector_110
-                0x0000000000000444                __vector_31
-                0x0000000000000444                __vector_92
-                0x0000000000000444                __vector_35
-                0x0000000000000444                __vector_78
-                0x0000000000000444                __vector_74
-                0x0000000000000444                __vector_117
-                0x0000000000000444                __vector_39
-                0x0000000000000444                __vector_107
-                0x0000000000000444                __vector_3
-                0x0000000000000444                __vector_105
-                0x0000000000000444                __vector_98
-                0x0000000000000444                __vector_23
-                0x0000000000000444                __vector_68
-                0x0000000000000444                __vector_30
-                0x0000000000000444                __vector_73
-                0x0000000000000444                __vector_45
-                0x0000000000000444                __vector_25
-                0x0000000000000444                __vector_93
-                0x0000000000000444                __vector_61
-                0x0000000000000444                __vector_11
-                0x0000000000000444                __vector_54
-                0x0000000000000444                __vector_99
-                0x0000000000000444                __vector_13
-                0x0000000000000444                __vector_17
-                0x0000000000000444                __vector_19
-                0x0000000000000444                __vector_56
-                0x0000000000000444                __vector_7
-                0x0000000000000444                __vector_125
-                0x0000000000000444                __vector_49
-                0x0000000000000444                __vector_123
-                0x0000000000000444                __vector_41
-                0x0000000000000444                __vector_86
-                0x0000000000000444                __vector_100
-                0x0000000000000444                __vector_101
-                0x0000000000000444                __vector_64
-                0x0000000000000444                __vector_88
-                0x0000000000000444                __vector_109
-                0x0000000000000444                __vector_43
-                0x0000000000000444                __vector_27
-                0x0000000000000444                __vector_5
-                0x0000000000000444                __vector_113
-                0x0000000000000444                __vector_33
-                0x0000000000000444                __vector_76
-                0x0000000000000444                __vector_115
-                0x0000000000000444                __vector_47
-                0x0000000000000444                __vector_52
-                0x0000000000000444                __vector_37
-                0x0000000000000444                __vector_95
-                0x0000000000000444                __vector_103
-                0x0000000000000444                __vector_96
-                0x0000000000000444                __vector_89
-                0x0000000000000444                __vector_108
-                0x0000000000000444                __vector_4
-                0x0000000000000444                __vector_44
-                0x0000000000000444                __vector_82
-                0x0000000000000444                __vector_106
-                0x0000000000000444                __vector_118
-                0x0000000000000444                __vector_51
-                0x0000000000000444                __vector_9
-                0x0000000000000444                __vector_2
-                0x0000000000000444                __vector_21
-                0x0000000000000444                __vector_15
-                0x0000000000000444                __vector_66
-                0x0000000000000444                __vector_36
-                0x0000000000000444                __vector_79
-                0x0000000000000444                __vector_58
-                0x0000000000000444                __vector_70
-                0x0000000000000444                __vector_83
-                0x0000000000000444                __vector_29
-                0x0000000000000444                __vector_60
-                0x0000000000000444                __vector_121
-                0x0000000000000444                __vector_40
-                0x0000000000000444                __vector_85
-                0x0000000000000444                __vector_94
-                0x0000000000000444                __vector_126
-                0x0000000000000444                __vector_8
-                0x0000000000000444                __vector_26
-                0x0000000000000444                __vector_48
-                0x0000000000000444                __vector_124
-                0x0000000000000444                __vector_116
-                0x0000000000000444                __vector_112
-                0x0000000000000444                __vector_111
-                0x0000000000000444                __vector_80
-                0x0000000000000444                __vector_14
-                0x0000000000000444                __vector_84
-                0x0000000000000444                __vector_57
-                0x0000000000000444                __vector_53
-                0x0000000000000444                __vector_10
-                0x0000000000000444                __vector_50
-                0x0000000000000444                __vector_16
-                0x0000000000000444                __vector_59
-                0x0000000000000444                __vector_18
-                0x0000000000000444                __vector_97
-                0x0000000000000444                __vector_20
-                0x0000000000000444                __vector_42
-                0x0000000000000444                __vector_87
-                0x0000000000000444                __vector_65
-                0x0000000000000444                __vector_120
+.text           0x0000000000000472        0x4
+ .text          0x0000000000000472        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.2.141/xc8/avr/lib/avrxmega7/memx-const/crtatxmega128a1u.o
+                0x0000000000000472                __vector_38
+                0x0000000000000472                __vector_22
+                0x0000000000000472                __vector_63
+                0x0000000000000472                __vector_28
+                0x0000000000000472                __vector_67
+                0x0000000000000472                __vector_1
+                0x0000000000000472                __vector_119
+                0x0000000000000472                __vector_32
+                0x0000000000000472                __vector_75
+                0x0000000000000472                __vector_71
+                0x0000000000000472                __vector_91
+                0x0000000000000472                __vector_34
+                0x0000000000000472                __vector_62
+                0x0000000000000472                __vector_77
+                0x0000000000000472                __vector_102
+                0x0000000000000472                __vector_24
+                0x0000000000000472                __vector_12
+                0x0000000000000472                __vector_55
+                0x0000000000000472                __vector_69
+                0x0000000000000472                __vector_81
+                0x0000000000000472                __vector_90
+                0x0000000000000472                __vector_46
+                0x0000000000000472                __bad_interrupt
+                0x0000000000000472                __vector_122
+                0x0000000000000472                __vector_72
+                0x0000000000000472                __vector_114
+                0x0000000000000472                __vector_6
+                0x0000000000000472                __vector_110
+                0x0000000000000472                __vector_31
+                0x0000000000000472                __vector_92
+                0x0000000000000472                __vector_35
+                0x0000000000000472                __vector_78
+                0x0000000000000472                __vector_74
+                0x0000000000000472                __vector_117
+                0x0000000000000472                __vector_39
+                0x0000000000000472                __vector_107
+                0x0000000000000472                __vector_3
+                0x0000000000000472                __vector_105
+                0x0000000000000472                __vector_98
+                0x0000000000000472                __vector_23
+                0x0000000000000472                __vector_68
+                0x0000000000000472                __vector_30
+                0x0000000000000472                __vector_73
+                0x0000000000000472                __vector_45
+                0x0000000000000472                __vector_25
+                0x0000000000000472                __vector_93
+                0x0000000000000472                __vector_61
+                0x0000000000000472                __vector_11
+                0x0000000000000472                __vector_54
+                0x0000000000000472                __vector_99
+                0x0000000000000472                __vector_13
+                0x0000000000000472                __vector_17
+                0x0000000000000472                __vector_19
+                0x0000000000000472                __vector_56
+                0x0000000000000472                __vector_7
+                0x0000000000000472                __vector_125
+                0x0000000000000472                __vector_49
+                0x0000000000000472                __vector_123
+                0x0000000000000472                __vector_41
+                0x0000000000000472                __vector_86
+                0x0000000000000472                __vector_100
+                0x0000000000000472                __vector_101
+                0x0000000000000472                __vector_64
+                0x0000000000000472                __vector_88
+                0x0000000000000472                __vector_109
+                0x0000000000000472                __vector_43
+                0x0000000000000472                __vector_27
+                0x0000000000000472                __vector_5
+                0x0000000000000472                __vector_113
+                0x0000000000000472                __vector_33
+                0x0000000000000472                __vector_76
+                0x0000000000000472                __vector_115
+                0x0000000000000472                __vector_47
+                0x0000000000000472                __vector_52
+                0x0000000000000472                __vector_37
+                0x0000000000000472                __vector_95
+                0x0000000000000472                __vector_103
+                0x0000000000000472                __vector_96
+                0x0000000000000472                __vector_89
+                0x0000000000000472                __vector_108
+                0x0000000000000472                __vector_4
+                0x0000000000000472                __vector_44
+                0x0000000000000472                __vector_82
+                0x0000000000000472                __vector_106
+                0x0000000000000472                __vector_118
+                0x0000000000000472                __vector_51
+                0x0000000000000472                __vector_9
+                0x0000000000000472                __vector_2
+                0x0000000000000472                __vector_21
+                0x0000000000000472                __vector_15
+                0x0000000000000472                __vector_66
+                0x0000000000000472                __vector_36
+                0x0000000000000472                __vector_79
+                0x0000000000000472                __vector_58
+                0x0000000000000472                __vector_70
+                0x0000000000000472                __vector_83
+                0x0000000000000472                __vector_29
+                0x0000000000000472                __vector_60
+                0x0000000000000472                __vector_121
+                0x0000000000000472                __vector_40
+                0x0000000000000472                __vector_85
+                0x0000000000000472                __vector_94
+                0x0000000000000472                __vector_126
+                0x0000000000000472                __vector_8
+                0x0000000000000472                __vector_26
+                0x0000000000000472                __vector_48
+                0x0000000000000472                __vector_124
+                0x0000000000000472                __vector_116
+                0x0000000000000472                __vector_112
+                0x0000000000000472                __vector_111
+                0x0000000000000472                __vector_80
+                0x0000000000000472                __vector_14
+                0x0000000000000472                __vector_84
+                0x0000000000000472                __vector_57
+                0x0000000000000472                __vector_53
+                0x0000000000000472                __vector_10
+                0x0000000000000472                __vector_50
+                0x0000000000000472                __vector_16
+                0x0000000000000472                __vector_59
+                0x0000000000000472                __vector_18
+                0x0000000000000472                __vector_97
+                0x0000000000000472                __vector_20
+                0x0000000000000472                __vector_42
+                0x0000000000000472                __vector_87
+                0x0000000000000472                __vector_65
+                0x0000000000000472                __vector_120
