@@ -34,20 +34,20 @@ public class DeviceControlActivity extends BluetoothTest {
     private ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder service) {
-            Log.w("1","THIS IS A TEST");
+            //Log.w("1","THIS IS A TEST");
             bluetoothLeService = ((BluetoothLeService.LocalBinder) service).getService();
             if (bluetoothLeService != null) {
                 if (!bluetoothLeService.initialize()) {
                     Log.e(TAG, "Unable to initialize Bluetooth.");
                 }
                 // Assume Bluetooth Adapter is initialized and ready to connect
-                Toast.makeText(DeviceControlActivity.this, "Adapter ready to connect.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(DeviceControlActivity.this, "Adapter ready to connect.", Toast.LENGTH_SHORT).show();
                 // Connect to device with address: F1:ED:88:DE:69:1C
                 bluetoothLeService.connect(address);
 
             }
-            else
-                Toast.makeText(DeviceControlActivity.this, "Adapter is NOT ready to connect.", Toast.LENGTH_SHORT).show();
+            //else
+                //Toast.makeText(DeviceControlActivity.this, "Adapter is NOT ready to connect.", Toast.LENGTH_SHORT).show();
         }
 
         @Override
@@ -80,15 +80,18 @@ public class DeviceControlActivity extends BluetoothTest {
 
     private void displayGattServices(List<BluetoothGattService> gattServices) {
         if (gattServices == null) {
-            Toast.makeText(DeviceControlActivity.this, "No services found.", Toast.LENGTH_SHORT).show();
+            Log.e(TAG, "No services found.");
+            //Toast.makeText(DeviceControlActivity.this, "No services found.", Toast.LENGTH_SHORT).show();
             return;
         }
         for (BluetoothGattService gattService : gattServices) {
-            Toast.makeText(DeviceControlActivity.this, "S UUID: " + gattService.getUuid().toString(), Toast.LENGTH_LONG).show();
+            Log.w(TAG, "Service UUID: " + gattService.getUuid().toString());
+            //Toast.makeText(DeviceControlActivity.this, "S UUID: " + gattService.getUuid().toString(), Toast.LENGTH_LONG).show();
             List<BluetoothGattCharacteristic> gattCharacteristics = gattService.getCharacteristics();
             for (BluetoothGattCharacteristic gattCharacteristic : gattCharacteristics)
             {
-                Toast.makeText(DeviceControlActivity.this, "C UUID: " + gattCharacteristic.getUuid().toString(), Toast.LENGTH_LONG).show();
+                Log.w(TAG, "Characteristic UUID: " + gattCharacteristic.getUuid().toString());
+                //Toast.makeText(DeviceControlActivity.this, "C UUID: " + gattCharacteristic.getUuid().toString(), Toast.LENGTH_LONG).show();
             }
         }
     }
