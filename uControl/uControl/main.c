@@ -31,19 +31,27 @@ ISR(PORTF_INT0_vect){
 	
  	//PORTF.OUTTGL = 1;
 	PORTF.OUTCLR = SS_bm;
-	usartd0_out_char(spi_read());
-	usartd0_out_char(spi_read());
-	usartd0_out_char(spi_read());
-	usartd0_out_char(spi_read());
-	usartd0_out_char(spi_read());
-	usartd0_out_char(spi_read());
-	usartd0_out_char(spi_read());
-	usartd0_out_char(spi_read());
-	usartd0_out_char(spi_read());
-	usartd0_out_char(spi_read());
-	usartd0_out_char(spi_read());
-	usartd0_out_char(spi_read());
+	spi_read();
+	spi_read();
+	spi_read();
+	
+	usartd0_out_string("Bytes received: ");
+
+
+	uint8_t num_bytes = spi_read();
+	usartd0_out_int(num_bytes);
+	usartd0_out_char(' ');
+	
+	
+	for(int i = 0; i < num_bytes-1; i++){
+		usartd0_out_char(spi_read());
+	}
+	
+	
+	
 	PORTF.OUTSET = SS_bm;
+	
+	usartd0_out_char('\n');
 	
 	PORTF.INTFLAGS = 1; //Reset interrupt flag
 }
