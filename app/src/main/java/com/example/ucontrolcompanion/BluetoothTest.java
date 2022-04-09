@@ -35,7 +35,7 @@ public class BluetoothTest extends AppCompatActivity {
     // Button and permission codes to identify which permission to check.
     private Button enableBtn, findBtn;
     public static final int BT_PERM_CODE = 100;
-    public static final int BT_ACC_FINELOC_PERM_CODE = 101;
+    public static final int ACCESS_FINELOC_PERM_CODE = 101;
     private int REQUEST_ENABLE_BT;
     public boolean btGranted = false;
     public boolean accLocGranted = false;
@@ -59,6 +59,7 @@ public class BluetoothTest extends AppCompatActivity {
                 else {
                     if (!btAdapter.isEnabled()) {
                         checkPermission(Manifest.permission.BLUETOOTH, BT_PERM_CODE);
+                        checkPermission(Manifest.permission.ACCESS_FINE_LOCATION, ACCESS_FINELOC_PERM_CODE);
                         if (btGranted) {
                             Intent enableBTIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                             startActivityForResult(enableBTIntent, REQUEST_ENABLE_BT);
@@ -105,8 +106,8 @@ public class BluetoothTest extends AppCompatActivity {
         else {
             if (requestCode == BT_PERM_CODE)
                 btGranted = true;
-            //if (requestCode == BT_SCAN_PERM_CODE)
-                //permScan = true;
+            if (requestCode == ACCESS_FINELOC_PERM_CODE)
+                accLocGranted = true;
         }
     }
 
@@ -131,13 +132,13 @@ public class BluetoothTest extends AppCompatActivity {
                 btGranted = false;
             }
         }
-        //else if (requestCode == BT_SCAN_PERM_CODE) {
-            //if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                //permScan = true;
-           // }
-            //else {
-                //permScan = false;
-            //}
-        //}
+        else if (requestCode == ACCESS_FINELOC_PERM_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                accLocGranted = true;
+            }
+            else {
+                accLocGranted = false;
+            }
+        }
     }
 }
