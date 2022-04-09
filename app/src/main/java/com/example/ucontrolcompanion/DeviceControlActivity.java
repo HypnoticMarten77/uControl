@@ -148,7 +148,10 @@ public class DeviceControlActivity extends BluetoothTest {
         // Set UI references
         connectionState = (TextView) findViewById(R.id.connection_state);
         dataValue = (TextView) findViewById(R.id.data_value);
-        address = savedInstanceState.getString("Address");
+
+        Bundle bundle = getIntent().getExtras();
+        address = bundle.getString("Address");
+
         Log.w(TAG, "Passed in address: " + address);
 
         // We start service using bindService
