@@ -41,8 +41,8 @@ public class DeviceScanActivity extends BluetoothTest {
         startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkPermission(Manifest.permission.BLUETOOTH_SCAN, BT_SCAN_PERM_CODE);
-                if (permScan)
+                checkPermission(Manifest.permission.BLUETOOTH, BT_PERM_CODE);
+                if (btGranted)
 
                     scanLeDevice();
                 else
@@ -54,8 +54,8 @@ public class DeviceScanActivity extends BluetoothTest {
         connectBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkPermission(Manifest.permission.BLUETOOTH_CONNECT, BT_CONNECT_PERM_CODE);
-                if (permConnect)
+                checkPermission(Manifest.permission.BLUETOOTH, BT_PERM_CODE);
+                if (btGranted)
                 {
                     //Log.w("1","Test");
                     Intent myIntent = new Intent(DeviceScanActivity.this, DeviceControlActivity.class);
@@ -74,13 +74,13 @@ public class DeviceScanActivity extends BluetoothTest {
                 @Override
                 public void run() {
                     scanning = false;
-                    checkPermission(Manifest.permission.BLUETOOTH_SCAN, BT_SCAN_PERM_CODE);
+                    checkPermission(Manifest.permission.BLUETOOTH, BT_PERM_CODE);
                     bluetoothLeScanner.stopScan(leScanCallback);
                 }
             }, SCAN_PERIOD);
 
             scanning = true;
-            checkPermission(Manifest.permission.BLUETOOTH_SCAN, BT_SCAN_PERM_CODE);
+            checkPermission(Manifest.permission.BLUETOOTH, BT_PERM_CODE);
             bluetoothLeScanner.startScan(leScanCallback);
         }
         else
@@ -95,7 +95,7 @@ public class DeviceScanActivity extends BluetoothTest {
         @Override
         public void onScanResult(int callbackType, ScanResult result) {
             super.onScanResult(callbackType, result);
-            checkPermission(Manifest.permission.BLUETOOTH_CONNECT, BT_CONNECT_PERM_CODE);
+            checkPermission(Manifest.permission.BLUETOOTH, BT_PERM_CODE);
             if (result.getDevice().getName() != null && result.getDevice().getName().contains("Adafruit"))
                 Toast.makeText(DeviceScanActivity.this, "Address: " + result.getDevice().getAddress(), Toast.LENGTH_LONG).show();
         }

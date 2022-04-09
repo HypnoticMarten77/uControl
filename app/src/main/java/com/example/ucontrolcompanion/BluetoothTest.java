@@ -34,11 +34,11 @@ public class BluetoothTest extends AppCompatActivity {
 
     // Button and permission codes to identify which permission to check.
     private Button enableBtn, findBtn;
-    public static final int BT_CONNECT_PERM_CODE = 100;
-    public static final int BT_SCAN_PERM_CODE = 101;
+    public static final int BT_PERM_CODE = 100;
+    public static final int BT_ACC_FINELOC_PERM_CODE = 101;
     private int REQUEST_ENABLE_BT;
-    public boolean permConnect = false;
-    public boolean permScan = false;
+    public boolean btGranted = false;
+    public boolean accLocGranted = false;
     BluetoothAdapter btAdapter = BluetoothAdapter.getDefaultAdapter();
 
     @Override
@@ -58,8 +58,8 @@ public class BluetoothTest extends AppCompatActivity {
                     Toast.makeText(BluetoothTest.this, "No Bluetooth adapter detected.", Toast.LENGTH_SHORT).show();
                 else {
                     if (!btAdapter.isEnabled()) {
-                        checkPermission(Manifest.permission.BLUETOOTH_CONNECT, BT_CONNECT_PERM_CODE);
-                        if (permConnect) {
+                        checkPermission(Manifest.permission.BLUETOOTH, BT_PERM_CODE);
+                        if (btGranted) {
                             Intent enableBTIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                             startActivityForResult(enableBTIntent, REQUEST_ENABLE_BT);
                         }
@@ -72,14 +72,14 @@ public class BluetoothTest extends AppCompatActivity {
         findBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkPermission(Manifest.permission.BLUETOOTH_CONNECT, BT_CONNECT_PERM_CODE);
-                if (permConnect)
+                checkPermission(Manifest.permission.BLUETOOTH, BT_PERM_CODE);
+                if (btGranted)
                 {
                     Intent myIntent = new Intent(BluetoothTest.this, DeviceScanActivity.class);
                     startActivityForResult(myIntent, 0);
                 }
                 else
-                    Toast.makeText(BluetoothTest.this, "Please give BT connect perm.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(BluetoothTest.this, "Please give BT perm.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -103,10 +103,10 @@ public class BluetoothTest extends AppCompatActivity {
             ActivityCompat.requestPermissions(BluetoothTest.this, new String[] { permission }, requestCode);
         }
         else {
-            if (requestCode == BT_CONNECT_PERM_CODE)
-                permConnect = true;
-            if (requestCode == BT_SCAN_PERM_CODE)
-                permScan = true;
+            if (requestCode == BT_PERM_CODE)
+                btGranted = true;
+            //if (requestCode == BT_SCAN_PERM_CODE)
+                //permScan = true;
         }
     }
 
@@ -123,21 +123,21 @@ public class BluetoothTest extends AppCompatActivity {
                 permissions,
                 grantResults);
 
-        if (requestCode == BT_CONNECT_PERM_CODE) {
+        if (requestCode == BT_PERM_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                permConnect = true;
+                btGranted = true;
             }
             else {
-                permConnect = false;
+                btGranted = false;
             }
         }
-        else if (requestCode == BT_SCAN_PERM_CODE) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                permScan = true;
-            }
-            else {
-                permScan = false;
-            }
-        }
+        //else if (requestCode == BT_SCAN_PERM_CODE) {
+            //if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                //permScan = true;
+           // }
+            //else {
+                //permScan = false;
+            //}
+        //}
     }
 }

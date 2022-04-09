@@ -9,7 +9,6 @@ import android.bluetooth.BluetoothGattCallback;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
 import android.bluetooth.BluetoothProfile;
-import android.bluetooth.BluetoothStatusCodes;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Binder;
@@ -61,7 +60,7 @@ public class BluetoothLeService extends Service {
         if (bluetoothGatt == null) {
             return;
         }
-        if (ActivityCompat.checkSelfPermission(BluetoothLeService.this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(BluetoothLeService.this, Manifest.permission.BLUETOOTH) != PackageManager.PERMISSION_GRANTED) {
             return;
         } else {
             bluetoothGatt.close();
@@ -79,7 +78,7 @@ public class BluetoothLeService extends Service {
             final BluetoothDevice device = bluetoothAdapter.getRemoteDevice((address));
 
             // Connect to GATT server on device
-            if (ActivityCompat.checkSelfPermission(BluetoothLeService.this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.checkSelfPermission(BluetoothLeService.this, Manifest.permission.BLUETOOTH) != PackageManager.PERMISSION_GRANTED) {
                 return false;
             } else {
                 bluetoothGatt = device.connectGatt(this, false, bluetoothGattCallback);
@@ -95,16 +94,16 @@ public class BluetoothLeService extends Service {
     public int writeCharacteristic(BluetoothGattCharacteristic characteristic, byte[] value, int writeType) {
         if (bluetoothGatt == null) {
             Log.w(TAG, "Bluetooth not Initialized");
-            return BluetoothStatusCodes.ERROR_BLUETOOTH_NOT_ENABLED;
+            return 1;
         }
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-            Log.w(TAG, "Missing Bluetooth Connect Perms.");
-            return BluetoothStatusCodes.ERROR_MISSING_BLUETOOTH_CONNECT_PERMISSION;
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH) != PackageManager.PERMISSION_GRANTED) {
+            Log.w(TAG, "Missing Bluetooth Perms.");
+            return 6;
         } else {
             characteristic.setValue(value);
             bluetoothGatt.writeCharacteristic(characteristic);
             Log.w(TAG, "Writing characteristic.");
-            return BluetoothStatusCodes.SUCCESS;
+            return 0;
         }
     }
 
@@ -114,7 +113,7 @@ public class BluetoothLeService extends Service {
             return;
         }
         // read from remote device
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH) != PackageManager.PERMISSION_GRANTED) {
             return;
         }else {
             Log.w(TAG, "Perms are granted, attempt to read.");
@@ -132,7 +131,7 @@ public class BluetoothLeService extends Service {
                 connectionState = 2;
                 broadcastUpdate(ACTION_GATT_CONNECTED, null);
                 // Attempts to discover services after successful connection
-                if (ActivityCompat.checkSelfPermission(BluetoothLeService.this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+                if (ActivityCompat.checkSelfPermission(BluetoothLeService.this, Manifest.permission.BLUETOOTH) != PackageManager.PERMISSION_GRANTED) {
                     return;
                 }
                 bluetoothGatt.discoverServices();
