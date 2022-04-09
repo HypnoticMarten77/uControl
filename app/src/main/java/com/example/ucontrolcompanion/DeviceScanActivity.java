@@ -43,7 +43,6 @@ public class DeviceScanActivity extends BluetoothTest {
             public void onClick(View v) {
                 checkPermission(Manifest.permission.BLUETOOTH, BT_PERM_CODE);
                 if (btGranted)
-
                     scanLeDevice();
                 else
                     Toast.makeText(DeviceScanActivity.this, "Scan perm not granted.", Toast.LENGTH_SHORT).show();
@@ -62,7 +61,7 @@ public class DeviceScanActivity extends BluetoothTest {
                     startActivityForResult(myIntent, 0);
                 }
                 else
-                    Toast.makeText(DeviceScanActivity.this, "Please give BT connect perm.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DeviceScanActivity.this, "Please give BT perm.", Toast.LENGTH_SHORT).show();
             }
         });
     }
