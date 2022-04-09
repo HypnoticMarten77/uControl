@@ -12,6 +12,7 @@ import android.bluetooth.le.ScanResult;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,7 @@ public class DeviceScanActivity extends BluetoothTest {
             public void onClick(View v) {
                 checkPermission(Manifest.permission.BLUETOOTH_SCAN, BT_SCAN_PERM_CODE);
                 if (permScan)
+
                     scanLeDevice();
                 else
                     Toast.makeText(DeviceScanActivity.this, "Scan perm not granted.", Toast.LENGTH_SHORT).show();
@@ -55,6 +57,7 @@ public class DeviceScanActivity extends BluetoothTest {
                 checkPermission(Manifest.permission.BLUETOOTH_CONNECT, BT_CONNECT_PERM_CODE);
                 if (permConnect)
                 {
+                    //Log.w("1","Test");
                     Intent myIntent = new Intent(DeviceScanActivity.this, DeviceControlActivity.class);
                     startActivityForResult(myIntent, 0);
                 }

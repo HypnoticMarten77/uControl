@@ -98,10 +98,12 @@ public class BluetoothLeService extends Service {
             return BluetoothStatusCodes.ERROR_BLUETOOTH_NOT_ENABLED;
         }
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+            Log.w(TAG, "Missing Bluetooth Connect Perms.");
             return BluetoothStatusCodes.ERROR_MISSING_BLUETOOTH_CONNECT_PERMISSION;
         } else {
             characteristic.setValue(value);
             bluetoothGatt.writeCharacteristic(characteristic);
+            Log.w(TAG, "Writing characteristic.");
             return BluetoothStatusCodes.SUCCESS;
         }
     }
