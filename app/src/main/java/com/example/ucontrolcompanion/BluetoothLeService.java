@@ -27,7 +27,7 @@ public class BluetoothLeService extends Service {
     public static final String TAG = "BluetoothLeService";
     private BluetoothAdapter bluetoothAdapter;
 
-    private BluetoothGatt bluetoothGatt;
+    public BluetoothGatt bluetoothGatt;
     public final static String ACTION_GATT_CONNECTED = "com.example.bluetooth.le.ACTION_GATT_CONNECTED";
     public final static String ACTION_GATT_DISCONNECTED = "com.example.bluetooth.le.ACTION_GATT_DISCONNECTED";
     public final static String ACTION_GATT_SERVICES_DISCOVERED = "com.example.bluetooth.le.ACTION_GATT_SERVICES_DISCOVERED";
@@ -96,15 +96,10 @@ public class BluetoothLeService extends Service {
             Log.w(TAG, "Bluetooth not Initialized");
             return 1;
         }
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH) != PackageManager.PERMISSION_GRANTED) {
-            Log.w(TAG, "Missing Bluetooth Perms.");
-            return 6;
-        } else {
-            characteristic.setValue(value);
-            bluetoothGatt.writeCharacteristic(characteristic);
-            Log.w(TAG, "Writing characteristic.");
-            return 0;
-        }
+        characteristic.setValue(value);
+        bluetoothGatt.writeCharacteristic(characteristic);
+        Log.w(TAG, "Writing characteristic.");
+        return 0;
     }
 
     public void readCharacteristic(BluetoothGattCharacteristic characteristic) {
@@ -113,13 +108,9 @@ public class BluetoothLeService extends Service {
             return;
         }
         // read from remote device
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }else {
-            Log.w(TAG, "Perms are granted, attempt to read.");
-            if (!bluetoothGatt.readCharacteristic(characteristic));
-                Log.e(TAG, "Failed to read characteristic " + characteristic.getPermissions());
-        }
+        Log.w(TAG, "Perms are granted, attempt to read.");
+        if (!bluetoothGatt.readCharacteristic(characteristic));
+        Log.e(TAG, "Failed to read characteristic " + characteristic.getPermissions());
     }
 
     // GATT Callback
@@ -131,9 +122,6 @@ public class BluetoothLeService extends Service {
                 connectionState = 2;
                 broadcastUpdate(ACTION_GATT_CONNECTED, null);
                 // Attempts to discover services after successful connection
-                if (ActivityCompat.checkSelfPermission(BluetoothLeService.this, Manifest.permission.BLUETOOTH) != PackageManager.PERMISSION_GRANTED) {
-                    return;
-                }
                 bluetoothGatt.discoverServices();
             } else if (newState == BluetoothProfile.STATE_DISCONNECTED) {
                 // Disconnected from the GATT Server

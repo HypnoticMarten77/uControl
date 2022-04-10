@@ -79,8 +79,13 @@ public class HomeActivity extends AppCompatActivity {
     }
     public void openStartActivity(){
         TextView textView = findViewById(R.id.textView3);
-        if(textView.getText().equals("Emulated")) {
+        if(!textView.getText().equals("Emulated"))
+            Toast.makeText(this, "Please select the emulated controller.", Toast.LENGTH_LONG).show();
+        else if (address == null)
+            Toast.makeText(this, "Please perform a scan for your uControl device.", Toast.LENGTH_LONG).show();
+        else {
             Intent intent = new Intent(this, emulatedController.class);
+            intent.putExtra("Address", address);
             startActivity(intent);
         }
     }
@@ -137,13 +142,4 @@ public class HomeActivity extends AppCompatActivity {
             }
         }
     };
-
-    private void checkPermissions()
-    {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_DENIED) {
-
-            // Requesting the permission
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 100);
-        }
-    }
 }
