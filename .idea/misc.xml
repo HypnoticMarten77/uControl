@@ -8,15 +8,22 @@
         <entry key="..\:/Users/samom/Desktop/Work/uControl/app/src/main/res/layout/content_main.xml" value="0.11302083333333333" />
         <entry key="..\:/Users/samom/Desktop/Work/uControl/app/src/main/res/layout/controller_select.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/samom/Desktop/Work/uControl/app/src/main/res/menu/menu_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/users/andre/AndroidStudioProjects/uControl/app/src/main/res/drawable-anydpi/ic_a_button.xml" value="0.16" />
+        <entry key="..\:/users/andre/AndroidStudioProjects/uControl/app/src/main/res/drawable-anydpi/ic_dpad.xml" value="0.16" />
+        <entry key="..\:/users/andre/AndroidStudioProjects/uControl/app/src/main/res/drawable-anydpi/ic_nintendo_switch_logo.xml" value="0.16" />
+        <entry key="..\:/users/andre/AndroidStudioProjects/uControl/app/src/main/res/drawable-anydpi/ic_playstation.xml" value="0.16" />
+        <entry key="..\:/users/andre/AndroidStudioProjects/uControl/app/src/main/res/drawable-anydpi/ic_smartphone_touch_screen_svgrepo_com.xml" value="0.16" />
+        <entry key="..\:/users/andre/AndroidStudioProjects/uControl/app/src/main/res/drawable-anydpi/ic_splash.xml" value="1.0" />
         <entry key="..\:/users/andre/AndroidStudioProjects/uControl/app/src/main/res/drawable/ic_ic.xml" value="0.1405" />
         <entry key="..\:/users/andre/AndroidStudioProjects/uControl/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1405" />
-        <entry key="..\:/users/andre/AndroidStudioProjects/uControl/app/src/main/res/drawable/ic_splash.xml" value="0.351" />
+        <entry key="..\:/users/andre/AndroidStudioProjects/uControl/app/src/main/res/drawable/ic_splash.xml" value="1.0" />
         <entry key="..\:/users/andre/AndroidStudioProjects/uControl/app/src/main/res/layout/activity_bluetooth2.xml" value="0.2006340579710145" />
         <entry key="..\:/users/andre/AndroidStudioProjects/uControl/app/src/main/res/layout/activity_bluetooth_test.xml" value="0.25" />
         <entry key="..\:/users/andre/AndroidStudioProjects/uControl/app/src/main/res/layout/activity_device_control.xml" value="0.24456521739130435" />
         <entry key="..\:/users/andre/AndroidStudioProjects/uControl/app/src/main/res/layout/activity_device_scan.xml" value="0.1" />
-        <entry key="..\:/users/andre/AndroidStudioProjects/uControl/app/src/main/res/layout/activity_home.xml" value="0.35054347826086957" />
+        <entry key="..\:/users/andre/AndroidStudioProjects/uControl/app/src/main/res/layout/activity_home.xml" value="0.25" />
         <entry key="..\:/users/andre/AndroidStudioProjects/uControl/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/users/andre/AndroidStudioProjects/uControl/app/src/main/res/layout/console_select.xml" value="0.286231884057971" />
         <entry key="..\:/users/andre/AndroidStudioProjects/uControl/app/src/main/res/layout/content_main.xml" value="0.31476449275362317" />
         <entry key="..\:/users/andre/AndroidStudioProjects/uControl/app/src/main/res/layout/controller_select.xml" value="0.2006340579710145" />
         <entry key="..\:/users/andre/AndroidStudioProjects/uControl/app/src/main/res/layout/fragment_first.xml" value="0.31476449275362317" />
