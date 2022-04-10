@@ -22,15 +22,6 @@
         <service android:name=".BluetoothLeService" >
         </service>
         <activity
-            android:name=".DeviceControlActivity"
-            android:exported="false" />
-        <activity
-            android:name=".DeviceScanActivity"
-            android:exported="false" />
-        <activity
-            android:name=".BluetoothTest"
-            android:exported="false" />
-        <activity
             android:name=".HomeActivity"
             android:exported="false"
             android:label="Home" />
