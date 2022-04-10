@@ -129,7 +129,6 @@ public class HomeActivity extends AppCompatActivity {
         @Override
         public void onScanResult(int callbackType, ScanResult result) {
             super.onScanResult(callbackType, result);
-            Log.w("Scanner", result.getDevice().getName());
             if (result.getDevice().getName() != null && result.getDevice().getName().contains("Adafruit")) {
                 address = result.getDevice().getAddress();
                 TextView textView = findViewById(R.id.textView7);
