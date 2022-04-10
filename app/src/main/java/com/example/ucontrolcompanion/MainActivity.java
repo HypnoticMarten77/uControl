@@ -68,7 +68,8 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             Intent myIntent = new Intent(MainActivity.this, HomeActivity.class);
-            startActivityForResult(myIntent, 0);
+            finish();
+            startActivity(myIntent);
         }
     }
 
@@ -94,7 +95,8 @@ public class MainActivity extends AppCompatActivity {
         else
         {
             Intent myIntent = new Intent(MainActivity.this, HomeActivity.class);
-            startActivityForResult(myIntent, 0);
+            finish();
+            startActivity(myIntent);
         }
     }
 
