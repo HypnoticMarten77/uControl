@@ -134,6 +134,7 @@ public class HomeActivity extends AppCompatActivity {
                 address = result.getDevice().getAddress();
                 TextView textView = findViewById(R.id.textView7);
                 textView.setText("Address: " + address);
+                scanning = false;
             }
         }
     };
