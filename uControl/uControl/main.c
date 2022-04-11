@@ -50,14 +50,31 @@ ISR(PORTF_INT0_vect){
 	
 	if(num_bytes){
 	
-	usartd0_out_string("Bytes received: ");
-	usartd0_out_int(num_bytes);
-	usartd0_out_char(' ');
+	//usartd0_out_string("Bytes received: ");
+	//usartd0_out_int(num_bytes - 1);
+	//usartd0_out_char(' ');
 	
 	
-	for(int i = 0; i < num_bytes-1; i++){
-		usartd0_out_char(spi_read());
-	}
+	usartd0_out_string("Received: ");
+	
+	uint8_t char1 = spi_read();
+	uint8_t char2 = spi_read();
+	uint8_t char3 = spi_read();
+	
+	usartd0_out_char(char3);
+	
+	
+	if(char3 == 'U') PORTA.OUTTGL = 0x01;
+	if(char3 == 'D') PORTA.OUTTGL = 0x02;
+	if(char3 == 'L') PORTA.OUTTGL = 0x04;
+	if(char3 == 'R') PORTA.OUTTGL = 0x08;
+	if(char3 == 'N') PORTA.OUTTGL = 0x10;
+	
+	
+	
+	//for(int i = 0; i < num_bytes-4; i++){
+	//	usartd0_out_char(spi_read());
+	//}
 	
 	
 	
@@ -77,7 +94,7 @@ void tcc0_init(void)
 TCC0.PER = 7812;
 
 //Load prescaler to start the timer prescaler of 8
-TCC0.CTRLA = TC_CLKSEL_DIV256_gc;
+TCC0.CTRLA = TC_CLKSEL_DIV1_gc;
 }
 
 
@@ -94,6 +111,15 @@ int main(void)
 	
 	//Initialize UART Module 0
 	usartd0_init();
+	
+	
+	
+	PORTA.DIRSET = 31;
+	//PORTA.OUTSET = 15;
+	
+	
+	
+	
 	
     while(1)
     {
@@ -113,13 +139,13 @@ int main(void)
 
 		/*--------------TRANSMISSION EXAMPLE--------------*/
 	
-		//PORTF.OUTCLR = SS_bm;
-		//spi_write(0x10);           //10-01-0A-nBytes-0byte-1byte-...-nbyte this sends to uart
-		//spi_write(0x01);
-		//spi_write(0x0A);
-		//spi_write(0x10);
-		//spi_write_string("This is a test.\n");
-		//PORTF.OUTSET = SS_bm;
+// 		PORTF.OUTCLR = SS_bm;
+// 		spi_write(0x10);           //10-01-0A-nBytes-0byte-1byte-...-nbyte this sends to uart
+// 		spi_write(0x01);
+// 		spi_write(0x0A);
+// 		spi_write(0x10);
+// 		spi_write_string("This is a test.\n");
+// 		PORTF.OUTSET = SS_bm;
 		
 		
 		
