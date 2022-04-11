@@ -9,6 +9,8 @@
 3/19- Meeting to create Android Studio App Project and Microchip Studio Project (Mason, Andres, Juan, Sam)
 3/19- Mason soldered headers and distributed hardware to everyone.
 
+3/21 - Juan updated wireframe to include "Choose Controller" Page
+
 3/29 - Mason starting AT command implementation for bluetooth modules via SPI (getting network connections setup)
 3/30 - Mason Continue AT command implementation. (Hope to finish tomorrow/over the weekend.)
 3/30, 3/31- Mason Wired up the Bluetooth module, currently in pairing mode and waiting for AT commands. Implemented SPI library and confirmed with oscilloscope that this indeed works.
@@ -22,3 +24,31 @@
 4/3 - Andres implemented a basic splash screen that redirects to home screen on app startup. Edited app manifold to display correct app name and implemented app icons.
 
 4/4 - Sam tested app on physical device, made home screen layout.
+4/4 - Mason doing research on bluetooth protocol.
+
+4/5 - Mason got transmission working with XMega SPI module & ordered a new phone to test the app on.
+4/5 - Sam made controller select screen layout and attempted to fix bluetooth issues.
+4/5 - Juan started bluetooth connection for the app.
+4/5 - Andres picked up where Juan left off and updated manifold with correct BT perms.  Did additional research as setting up Bluetooth is Android version dependent.
+
+4/6 - Andres implemented permission prompts and ensuring BT adapter is enabled and accessible in app.
+4/6 - Sam tested Bluetooth functionality on hardware.
+4/6 - Juan, Andres and Mason did a pair programming session to fix bugs with the BT adapter and allow app to scan for BLE devices.
+4/6 - Juan created a layout for the Design Prototype Report and shared it with the team
+4/6 - Mason updated firmware, adding functionality for receiving data.
+
+4/7 - Sam tested Bluetooth functionality on hardware, implemented selecting a controller and console type, and started making the emulated controller.
+4/7 - Juan Started GATT server implementation
+4/7 - Mason continuing firmware update.
+4/7 - (Juan, Andres, Mason, Sam) Pair Programming to test and fix bugs for GATT server implementation.
+
+4/8 - Sam started implemented emulated controller inputs.
+4/8 - (Andres, Juan, Mason) Pair programming to complete GATT server connection and BLE data transfer.
+
+4/9 - Mason finishing up demo firmware & testing system to ensure functionality (looking for pkg to install app on phone).
+4/9-  Mason designed and built demo circuit using LEDs to show controller emulation via Bluetooth.
+4/9 - Andres put together the developed Bluetooth functionality, emulated controller, and UI into one cohesive application. Exported APK for demo.
+4/9 - Mason intalled APK standalone application on phone and ensured that it works properly thanks to Andres.
+
+4/10 - Juan made Progress Presentation on Canva.
+4/10 - Andres and Mason made progress on prototype report.
