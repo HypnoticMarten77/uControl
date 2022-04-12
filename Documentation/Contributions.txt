@@ -33,7 +33,7 @@
 
 4/6 - Andres implemented permission prompts and ensuring BT adapter is enabled and accessible in app.
 4/6 - Sam tested Bluetooth functionality on hardware.
-4/6 - Juan, Andres and Mason did a pair programming session to fix bugs with the BT adapter and allow app to scan for BLE devices.
+4/6 - (Juan, Andres, Mason) Pair programming session to fix bugs with the BT adapter and allow app to scan for BLE devices.
 4/6 - Juan created a layout for the Design Prototype Report and shared it with the team
 4/6 - Mason updated firmware, adding functionality for receiving data.
 
@@ -52,3 +52,6 @@
 
 4/10 - Juan made Progress Presentation on Canva.
 4/10 - Andres and Mason made progress on prototype report.
+
+4/11 - Juan finalized Progress Presentation.
+4/11 - Juan made progress on prototype report.
