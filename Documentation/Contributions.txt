@@ -55,3 +55,5 @@
 
 4/11 - Juan finalized Progress Presentation.
 4/11 - Juan made progress on prototype report.
+
+8/29 - Juan and Sam made progress on App UI to list available services
