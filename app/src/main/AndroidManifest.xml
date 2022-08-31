@@ -5,9 +5,7 @@
     <uses-feature
         android:name="android.hardware.bluetooth_le"
         android:required="true" /> <!-- Request legacy Bluetooth permissions on older devices. -->
-    <uses-permission
-        android:name="android.permission.BLUETOOTH" />
-
+    <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
@@ -19,8 +17,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UControlCompanion">
-        <service android:name=".BluetoothLeService" >
-        </service>
+        <activity
+            android:name=".PairController"
+            android:exported="false" />
+
+        <service android:name=".BluetoothLeService"></service>
+
         <activity
             android:name=".HomeActivity"
             android:exported="false"

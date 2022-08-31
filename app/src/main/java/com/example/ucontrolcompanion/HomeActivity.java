@@ -40,6 +40,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
         Button controllerButton = findViewById(R.id.button4);
         controllerButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -68,6 +69,15 @@ public class HomeActivity extends AppCompatActivity {
                 scanLeDevice();
             }
         });
+        Button pairControllerButton = findViewById(R.id.button11);
+        pairControllerButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) { openPairControllerActivity(); }
+        });
+    }
+    public void openPairControllerActivity(){
+        Intent intent = new Intent(this, PairController.class);
+        startActivity(intent);
     }
     public void openControllerActivity(){
         Intent intent = new Intent(this, ControllerActivity.class);
