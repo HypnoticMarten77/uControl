@@ -76,8 +76,13 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
     public void openPairControllerActivity(){
-        Intent intent = new Intent(this, PairController.class);
-        startActivity(intent);
+        if (address == null)
+            Toast.makeText(this, "Please perform a scan for your uControl device.", Toast.LENGTH_LONG).show();
+        else {
+            Intent intent = new Intent(this, PairController.class);
+            intent.putExtra("Address", address);
+            startActivity(intent);
+        }
     }
     public void openControllerActivity(){
         Intent intent = new Intent(this, ControllerActivity.class);
