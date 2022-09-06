@@ -56,4 +56,8 @@
 4/11 - Juan finalized Progress Presentation.
 4/11 - Juan made progress on prototype report.
 
-8/29 - Juan and Sam made progress on App UI to list available services
+8/29 - Juan and Sam made progress on App UI to list available services.
+8/30 - Mason changed some firmware code. Able to read Xbox One Controller address now.
+
+9/5 - Mason did research on AT commands to update GATT services of the bluetooth module.
+9/6 - Mason did research on proprietary hardware.
