@@ -7,8 +7,21 @@ Repository for UF CpE Design project,  uControl, the universal Bluetooth game co
 3. [Stakeholders](#stakeholders)
    <!-- 1. [Sub paragraph](#subparagraph1) -->
 3. [Project Description](#description)
-4. [Schematics and Diagrams](#diagrams)
-5. [Build Instructions](#build)
+4. [Usability](#usability)
+      * [Interface](#interface)
+      * [Navigation](#navigation)
+      * [Perception](#perception)
+      * [Responsiveness](#responsiveness)
+5. [Build Quality](#quality)
+      * [Robustness](#robustness)
+      * [Consistency](#consitency)
+      * [Aesthetic Rigor](#aesthetics)
+7. [Vertical Features](#features)
+      * [External Interface](#external)
+      * [Persistent State](#persistent)
+      * [Internal Systems](#internal)
+9. [Schematics and Diagrams](#diagrams)
+10. [Build Instructions](#build)
     * [Firmware](#firmware)
     * [Companion App](#app)
 
@@ -37,6 +50,24 @@ Use the uControl Companion App:
 * Click the back button to "Change Console".
 * Select the controller input emulation of your choice (Nintendo Switch/Playstation/Xbox).
 * Send the configuration to the uControl using the "Send Configuration" button.
+
+
+## Usability <a name="usability"></a>
+### Interface <a name="interface"></a>
+### Navigation <a name="navigation"></a>
+### Perception <a name="perception"></a>
+### Responsiveness <a name="responsiveness"></a>
+
+## Build Quality <a name="quality"></a>
+### Robustness <a name="robustness"></a>
+### Consistency <a name="consitency"></a>
+### Aesthetic Rigor <a name="aesthetics"></a>
+
+
+## Vertical Features <a name="features"></a>
+### External Interface <a name="external"></a>
+### Persistent State <a name="persistent"></a>
+### Internal Systems <a name="internal"></a>
 
 # Schematics and Diagrams <a name="diagrams"></a>
 
