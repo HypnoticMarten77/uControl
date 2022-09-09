@@ -10,15 +10,10 @@ Repository for UF CpE Design project,  uControl, the universal Bluetooth game co
 4. [Usability](#usability)
       * [Interface](#interface)
       * [Navigation](#navigation)
-      * [Perception](#perception)
-      * [Responsiveness](#responsiveness)
 5. [Build Quality](#quality)
-      * [Robustness](#robustness)
-      * [Consistency](#consitency)
-      * [Aesthetic Rigor](#aesthetics)
+      * [Known Bugs](#bugs)
 7. [Vertical Features](#features)
       * [External Interface](#external)
-      * [Persistent State](#persistent)
       * [Internal Systems](#internal)
 9. [Schematics and Diagrams](#diagrams)
 10. [Build Instructions](#build)
@@ -55,18 +50,12 @@ Use the uControl Companion App:
 ## Usability <a name="usability"></a>
 ### Interface <a name="interface"></a>
 ### Navigation <a name="navigation"></a>
-### Perception <a name="perception"></a>
-### Responsiveness <a name="responsiveness"></a>
 
 ## Build Quality <a name="quality"></a>
-### Robustness <a name="robustness"></a>
-### Consistency <a name="consitency"></a>
-### Aesthetic Rigor <a name="aesthetics"></a>
-
+### Known Bugs <a name="bugs"></a>
 
 ## Vertical Features <a name="features"></a>
 ### External Interface <a name="external"></a>
-### Persistent State <a name="persistent"></a>
 ### Internal Systems <a name="internal"></a>
 
 # Schematics and Diagrams <a name="diagrams"></a>
