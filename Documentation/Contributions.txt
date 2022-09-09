@@ -60,5 +60,9 @@
 8/30 - Mason changed some firmware code. Able to read Xbox One Controller address now.
 8/31 - Sam made progress on listing available services.
 
+9/1 - Andres inspected firmware code to see if it could be refactored.  Did research on XBOX controller drivers.
+
 9/5 - Mason did research on AT commands to update GATT services of the bluetooth module.
 9/6 - Mason did research on proprietary hardware.
+
+9/8 - Andres did research on USB drivers for game controllers, and writing USB HID drivers.
