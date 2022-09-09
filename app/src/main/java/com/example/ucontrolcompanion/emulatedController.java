@@ -139,7 +139,7 @@ public class emulatedController extends AppCompatActivity {
         // ServiceConnection listens for connection/disconnection
         Intent gattServiceIntent = new Intent(this, BluetoothLeService.class);
         bindService(gattServiceIntent, serviceConnection, Context.BIND_AUTO_CREATE);
-        
+
 
 
 
