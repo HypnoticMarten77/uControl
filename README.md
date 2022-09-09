@@ -1,5 +1,5 @@
-# uControl
-Repository for UF CpE Design project,  uControl, the universal Bluetooth game controller adapter.
+# ![alt text](https://cdn.discordapp.com/attachments/936755058626928735/1017882711089754223/app_wireframe_1.png)
+Repository for UF CpE Design project,  uControl, the universal Bluetooth game controller adapter. 
 
 # Contributors
 * Andres Maldonado-Martin
@@ -9,6 +9,21 @@ Repository for UF CpE Design project,  uControl, the universal Bluetooth game co
 
 # Stakeholders
 * TA: Evan Rocha
+
+# Project Description
+uControl is a all-in-one wireless game controller emulator, allowing you to pair controllers to your PC and emulating controller inputs. Using the uControl Companion App, you are able to manage the devices that are connected to the uControl module and select which (if any) emulation you want, allowing users to have quality emulated controllers for consoles they do not own, all while reducing the need for external input emulators such as XInput, and combining them into a single, wireless package. Using a PS2 emulator but don't have a PS2 controller? uControl will solve all these issues with a single product.
+
+Use the uControl Companion App:
+* Make sure your uControl is plugged in and has adequate power.
+* Launch the uControl Companion App.
+* For first time setups, click "Scan for uControl".
+* Once the uControl device has been found, click "Change Controller".
+* Select the controller type you are trying to pair with (Nintendo Switch/Playstation/Xbox/Phone)
+* Click the back button to "Change Console".
+* Select the controller input emulation of your choice (Nintendo Switch/Playstation/Xbox).
+* Send the configuration to the uControl using the "Send Configuration" button.
+
+# Schematics and Diagrams
 
 
 # Build Instructions
