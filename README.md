@@ -1,4 +1,4 @@
-# ![alt text](https://cdn.discordapp.com/attachments/936755058626928735/1017883636277710930/app_wireframe_1_1.png)
+# ![alt text](https://cdn.discordapp.com/attachments/936755058626928735/1017895293787832350/logo.png)
 Repository for UF CpE Design project,  uControl, the universal Bluetooth game controller adapter. 
 
 # Contributors
