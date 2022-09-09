@@ -134,10 +134,15 @@ public class emulatedController extends AppCompatActivity {
         address = bundle.getString("Address");
         Log.w(TAG, "Passed in address: " + address);
 
+
         // We start service using bindService
         // ServiceConnection listens for connection/disconnection
         Intent gattServiceIntent = new Intent(this, BluetoothLeService.class);
         bindService(gattServiceIntent, serviceConnection, Context.BIND_AUTO_CREATE);
+        
+
+
+
 
         Button upButton = findViewById(R.id.button3);
         upButton.setOnTouchListener(new View.OnTouchListener() {

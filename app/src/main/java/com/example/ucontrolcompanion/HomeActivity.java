@@ -134,10 +134,20 @@ public class HomeActivity extends AppCompatActivity {
         @Override
         public void onScanResult(int callbackType, ScanResult result) {
             super.onScanResult(callbackType, result);
+
+
+
             if (result.getDevice().getName() != null && result.getDevice().getName().contains("Adafruit")) {
                 address = result.getDevice().getAddress();
                 TextView textView = findViewById(R.id.textView7);
                 textView.setText("Address: " + address);
+                scanning = false;
+            }
+
+            else if (result.getDevice().getName() != null && result.getDevice().getName().contains("Xbox")){
+                address = result.getDevice().getAddress();
+                TextView textView = findViewById(R.id.xboxAddress);
+                textView.setText(address);
                 scanning = false;
             }
         }
