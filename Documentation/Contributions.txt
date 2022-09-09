@@ -66,3 +66,5 @@
 9/6 - Mason did research on proprietary hardware.
 
 9/8 - Andres did research on USB drivers for game controllers, and writing USB HID drivers.
+
+9/9 - Juan made progress on the Alpha Test Plan, setting up skeleton of document, and adding task flows for software components.
