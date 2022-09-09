@@ -27,4 +27,5 @@
     <string name="address_label">uControl Address</string>
     <string name="scan_for_ucontrol">Scan for uControl</string>
     <string name="ucontrol_address">No uControl found</string>
+    <string name="pair_controller">Pair Controller</string>
 </resources>
