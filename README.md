@@ -49,7 +49,10 @@ Use the uControl Companion App:
 
 ## Usability <a name="usability"></a>
 ### Interface <a name="interface"></a>
+Wireframe for app faces
+![alt text](https://cdn.discordapp.com/attachments/960677626811404430/1017965135840690206/interface.png)
 ### Navigation <a name="navigation"></a>
+![alt text](https://cdn.discordapp.com/attachments/904954102377771010/1017964646147297300/Screenshot_2022-09-09_210752.png)
 
 ## Build Quality <a name="quality"></a>
 ### Known Bugs <a name="bugs"></a>
