@@ -53,13 +53,53 @@ Use the uControl Companion App:
 
 ## Build Quality <a name="quality"></a>
 ### Known Bugs <a name="bugs"></a>
+* Crash if emulated input is sent before actually connecting to Bluetooth. Can be avoided by wating for module to fully connect before sending controller inputs.
+* Connection freeze if app is not fully shut down before re-opening a connection.
 
 ## Vertical Features <a name="features"></a>
 ### External Interface <a name="external"></a>
+--Supported Controller Systems
+* Phone Emulation - v0.2
+* </i>Xbox One - COMING SOON</i>
+* </i>Playstation 4 (Dualshock) - COMING SOON</i>
+* <i>Nintendo Switch -COMING SOON</i>
+
+--Supported Data Emulation Types
+* Basic HID gamepad - v0.1
+* </i>Xbox One - COMING SOON</i>
+* </i>Playstation 4 (Dualshock) - COMING SOON</i>
+* <i>Nintendo Switch -COMING SOON</i>
+
 ### Internal Systems <a name="internal"></a>
+--Bluetooth Specifications
+* ARM Cortex M0 core running at 16MHz
+* 256KB flash memory
+* 32KB SRAM
+* Transport: SPI at up to 4MHz clock speed
+* 5V-safe inputs (Arduino Uno friendly, etc.)
+* On-board 3.3V voltage regulation
+* Bootloader with support for safe OTA firmware updates
+* AT command set tunneled over SPI protocol
+* 23mm x 26mm x 5mm / 0.9" x 1" x 0.2"
+* Weight: 3g
+
+
+--Microprocessor Specifications (ATXMEGA128A1U Chipset)
+* 8 bit core size
+* 32 MHz clock speed
+* 128kb FLASH program memory
+* 2k X 8 EEPROM
+* 1.6V ~ 3.6V
+* 50MHz internal oscillator
+* Microchip Technologies
+* AVR XMEGA A1U
 
 # Schematics and Diagrams <a name="diagrams"></a>
+Hard-wire Connections
+![alt text](https://cdn.discordapp.com/attachments/960677104620560454/1017950729031397386/unknown.jpg)
 
+Current Electronics Housing
+![alt text](https://cdn.discordapp.com/attachments/946515441138937876/1017951341244600362/Screenshot_2022-09-09_201455.png)
 
 # Build Instructions <a name="build"></a>
 ## Firmware: (ATXMEGA128A1U) <a name="firmware"></a>
