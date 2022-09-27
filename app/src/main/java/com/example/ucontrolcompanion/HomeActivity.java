@@ -113,6 +113,8 @@ public class HomeActivity extends AppCompatActivity {
                 String returnString = data.getStringExtra(Intent.EXTRA_TEXT);
                 TextView textView = findViewById(R.id.textView3);
                 textView.setText(returnString);
+                textView = findViewById(R.id.xboxAddress);
+                textView.setText("");
             }
             else if(requestCode == CONSOLE_ACTIVITY_REQUEST_CODE){
                 String returnString = data.getStringExtra(Intent.EXTRA_TEXT);
