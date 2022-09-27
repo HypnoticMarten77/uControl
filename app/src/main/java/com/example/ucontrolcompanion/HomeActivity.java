@@ -149,14 +149,12 @@ public class HomeActivity extends AppCompatActivity {
         @Override
         public void onScanResult(int callbackType, ScanResult result) {
             super.onScanResult(callbackType, result);
-
-            if (result.getDevice().getName() != null && result.getDevice().getName().contains("Adafruit")) {
+            TextView addrText = findViewById(R.id.textView7);
+            if (addrText.getText().equals("No uControl found") && result.getDevice().getName() != null && result.getDevice().getName().contains("Adafruit")) {
                 address = result.getDevice().getAddress();
-                TextView textView = findViewById(R.id.textView7);
-                textView.setText("Address: " + address);
+                addrText.setText("Address: " + address);
                 scanning = false;
             }
-
             else if (result.getDevice().getName() != null){
                 TextView target = findViewById(R.id.textView3);
                 if (target.getText().equals("Xbox") && result.getDevice().getName().contains("Xbox")) {
@@ -171,7 +169,7 @@ public class HomeActivity extends AppCompatActivity {
                     textView.setText(address);
                     scanning = false;
                 }
-                else if (target.getText().equals("Nintendo Switch") && (result.getDevice().getName().contains("Joy-Con") || result.getDevice().getName().contains("Pro Controller"))) {
+                else if (target.getText().toString().contains("Switch") && (result.getDevice().getName().contains("Joy-Con") || result.getDevice().getName().contains("Pro Controller"))) {
                     address = result.getDevice().getAddress();
                     TextView textView = findViewById(R.id.xboxAddress);
                     textView.setText(address);
