@@ -68,3 +68,6 @@
 9/8 - Andres did research on USB drivers for game controllers, and writing USB HID drivers.
 
 9/9 - Juan made progress on the Alpha Test Plan, setting up skeleton of document, and adding task flows for software components.
+9/9 - Andres, Mason, and Sam finished the Alpha Build and Alpha Test Plan.
+
+9/26 - Sam worked on the Beta Build of the app.
