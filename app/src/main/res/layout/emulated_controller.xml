@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="69dp"
+        android:layout_height="77dp"
+        android:layout_marginTop="116dp"
+        android:layout_marginBottom="253dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="Up Button"
+        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="63dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="235dp"
+        android:layout_marginBottom="134dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="Up Button"
+        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="264dp"
+        android:layout_height="341dp"
+        android:contentDescription="dpad"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.406"
+        app:srcCompat="@drawable/ic_dpad" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="75dp"
+        android:layout_height="81dp"
+        android:layout_marginTop="177dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="192dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="Up Button"
+        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="75dp"
+        android:layout_height="81dp"
+        android:layout_marginTop="177dp"
+        android:layout_marginEnd="152dp"
+        android:layout_marginBottom="192dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="Up Button"
+        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="228dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="15dp"
+        android:contentDescription="A button"
+        android:rotation="90"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintHorizontal_bias="0.472"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/button7"
+        app:srcCompat="@drawable/ic_a_button" />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="156dp"
+        android:layout_height="154dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="Up Button"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="0.522"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.505" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

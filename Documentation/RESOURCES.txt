@@ -1,0 +1,30 @@
+--Where we bought 4 modules
+https://www.adafruit.com/product/2633?gclid=Cj0KCQjwuMuRBhCJARIsAHXdnqNWMBcxjLZ2WJ3pDuyYZj6vwa3HFKc5S1hl2Lbj1CL1vDQ-HbEWducaAhJwEALw_wcB
+
+--All files
+https://learn.adafruit.com/introducing-the-adafruit-bluefruit-spi-breakout/downloads
+
+
+--Learn the commands
+https://learn.adafruit.com/introducing-the-adafruit-bluefruit-le-uart-friend/command-mode-1
+
+
+--Change BLE GATT settings
+https://learn.adafruit.com/introducing-the-adafruit-bluefruit-le-uart-friend/ble-gatt
+
+
+--Specifications
+ARM Cortex M0 core running at 16MHz
+256KB flash memory
+32KB SRAM
+Transport: SPI at up to 4MHz clock speed
+5V-safe inputs (Arduino Uno friendly, etc.)
+On-board 3.3V voltage regulation
+Bootloader with support for safe OTA firmware updates
+Easy AT command set tunneled over SPI protocol to get up and running quickly
+23mm x 26mm x 5mm / 0.9" x 1" x 0.2"
+Weight: 3g
+
+
+--Technical Details
+https://www.adafruit.com/product/2633#technical-details
