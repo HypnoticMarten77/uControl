@@ -119,6 +119,7 @@ Please follow the README locaed in the Arduino Mega 2560 branch.
 
 ![alt text](https://cdn.discordapp.com/attachments/960677104620560454/1026241686352965742/IMG_4642.jpg)
 
+## PLEASE FOLLOW THIS LINK FOR THE BETA BUILD ADDITIONS
 [ARDUINO MEGA 2560 FIRMWARE](https://github.com/amaldonadomartin77/uControl/tree/Arduino-Mega-2560)
 
 ## Companion App: (Android Device running Android 12 or lower) <a name="app"></a>
