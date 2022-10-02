@@ -1,118 +1,48 @@
 # ![alt text](https://cdn.discordapp.com/attachments/936755058626928735/1017895293787832350/logo.png)
 Repository for UF CpE Design project,  uControl, the universal Bluetooth game controller adapter. 
 
-# Table of contents
-1. [Contributors](#contributors)
-    * [Individual Contributions](#indivcontribs)
-3. [Stakeholders](#stakeholders)
-   <!-- 1. [Sub paragraph](#subparagraph1) -->
-3. [Project Description](#description)
-4. [Usability](#usability)
-      * [Interface](#interface)
-      * [Navigation](#navigation)
-5. [Build Quality](#quality)
-      * [Known Bugs](#bugs)
-7. [Vertical Features](#features)
-      * [External Interface](#external)
-      * [Internal Systems](#internal)
-9. [Schematics and Diagrams](#diagrams)
-10. [Build Instructions](#build)
-    * [Firmware](#firmware)
-    * [Companion App](#app)
+# Hardware/Firmware Instructions and Details
 
 
-# Contributors <a name="contributors"></a>
-* Andres Maldonado-Martin
-* Mason Anderson
-* Juan Pablo Lancheros
-* Sam Fleischer
+The basic idea here is that we are taking advantage of the Arduino Mega's ATMEL 2560 chipset, just with our own proprietary firmware. There are technically two microprocessors located on the Arduino MEGA and UNO. To save on hardware, we are converting the ATMEL16U2 chip located on the board to a HID controller, rather than a serial port, reducing the stress on the main CPU, all while simplifying the software needed drastically.
 
-<a name="indivcontribs"></a>
-A detailed and comprehensive list and dates of individual contributions can be found [here](https://github.com/amaldonadomartin77/uControl/blob/main/Documentation/Contributions.txt).
+Rather than wasting the 16U2 chip on only serial communication (which is useful for debugging and reprogramming), we can instead use the 16U2 chip as a HID controller after the firmware has been finished, allowing us to send the converted data as if it were a HID, which will reduce our CPU load significantly since we don't need serial debugging once the product is finished.
 
-# Stakeholders <a name="stakeholders"></a>
-* TA: Evan Rocha
+![alt text](https://cdn.discordapp.com/attachments/960677104620560454/1026241686352965742/IMG_4642.jpg)
 
-# Project Description <a name="description"></a>
-uControl is a all-in-one wireless game controller emulator, allowing you to pair controllers to your PC and emulating controller inputs. Using the uControl Companion App, you are able to manage the devices that are connected to the uControl module and select which (if any) emulation you want, allowing users to have quality emulated controllers for consoles they do not own, all while reducing the need for external input emulators such as XInput, and combining them into a single, wireless package. Using a PS2 emulator but don't have a PS2 controller? uControl will solve all these issues with a single product.
+## Universal Plug and Play
 
-Use the uControl Companion App:
-* Make sure your uControl is plugged in and has adequate power.
-* Launch the uControl Companion App.
-* For first time setups, click "Scan for uControl".
-* Once the uControl device has been found, click "Change Controller".
-* Select the controller type you are trying to pair with (Nintendo Switch/Playstation/Xbox/Phone)
-* Click the back button to "Change Console".
-* Select the controller input emulation of your choice (Nintendo Switch/Playstation/Xbox).
-* Send the configuration to the uControl using the "Send Configuration" button.
+We are designing the uControl firmware to be recognized on Windows machines as a HID device, allowing us to reduce the requirement of writing drivers for every operating system (Linux/Windows/Mac/etc.). As well, this eliminates the need to manually configure external programs such as XInput, or other serial readers/interpreters, making the uControl much more lightweight and simple to use.
+
+The Arduino UNO/MEGA chipsets are not configured as HID devices and therefore must operate with our uControl firmware.
 
 
-## Usability <a name="usability"></a>
-### Interface <a name="interface"></a>
-Wireframe for app faces
-![alt text](https://cdn.discordapp.com/attachments/960677626811404430/1017965135840690206/interface.png)
-### Navigation <a name="navigation"></a>
-![alt text](https://cdn.discordapp.com/attachments/904954102377771010/1017964646147297300/Screenshot_2022-09-09_210752.png)
+## Flashing the uControl Firmware onto the 16U2
+Note** This process works with both the Arduino UNO and the Arduino MEGA2560, however, the MEGA is generally preferred as it has much more program memory available.
 
-## Build Quality <a name="quality"></a>
-### Known Bugs <a name="bugs"></a>
-* Crash if emulated input is sent before actually connecting to Bluetooth. Can be avoided by wating for module to fully connect before sending controller inputs.
-* Connection freeze if app is not fully shut down before re-opening a connection.
+To begin, you must first place the device in DFU mode (Device Firmware Update Mode) by shorting the two pins on the ICSP (In Circuit Serial Programmer).
 
-## Vertical Features <a name="features"></a>
-### External Interface <a name="external"></a>
---Supported Controller Systems
-* Phone Emulation - v0.2
-* </i>Xbox One - COMING SOON</i>
-* </i>Playstation 4 (Dualshock) - COMING SOON</i>
-* <i>Nintendo Switch -COMING SOON</i>
+![alt text](https://cdn.discordapp.com/attachments/960677104620560454/1026243657344499722/Screenshot_2022-10-02_172542.png)
 
---Supported Data Emulation Types
-* Basic HID gamepad - v0.1
-* </i>Xbox One - COMING SOON</i>
-* </i>Playstation 4 (Dualshock) - COMING SOON</i>
-* <i>Nintendo Switch -COMING SOON</i>
+Note** Before you flash the new firmware, make sure you upload the sketch to program memory as we will have no access to the 16U2 as a reprogrammer to reflash the program memory after it has been converted to UPNP mode.
 
-### Internal Systems <a name="internal"></a>
---Bluetooth Specifications
-* ARM Cortex M0 core running at 16MHz
-* 256KB flash memory
-* 32KB SRAM
-* Transport: SPI at up to 4MHz clock speed
-* 5V-safe inputs (Arduino Uno friendly, etc.)
-* On-board 3.3V voltage regulation
-* Bootloader with support for safe OTA firmware updates
-* AT command set tunneled over SPI protocol
-* 23mm x 26mm x 5mm / 0.9" x 1" x 0.2"
-* Weight: 3g
+Next, you must go to the device manager and locate the Arduino in DFU mode, sometimes the driver does not properly get installed, so you must install the software FLIP located in this repository or [here](https://www.microchip.com/en-us/development-tool/flip).
 
+Right click the unconfigured 16U2 device and update the firmware. Locate the driver in 
+[C:\Program Files (x86)\Atmel\Flip 3.4.7\usb]
+and make sure to "include subfolders".
 
---Microprocessor Specifications (ATXMEGA128A1U Chipset)
-* 8 bit core size
-* 32 MHz clock speed
-* 128kb FLASH program memory
-* 2k X 8 EEPROM
-* 1.6V ~ 3.6V
-* 50MHz internal oscillator
-* Microchip Technologies
-* AVR XMEGA A1U
+Now that the driver is installed you can flash the 16U2 by opening FLIP and select the 16U2:
+![alt text](https://cdn.discordapp.com/attachments/960677104620560454/1026246874430177350/Screenshot_2022-10-02_173829.png)
 
-# Schematics and Diagrams <a name="diagrams"></a>
-Hard-wire Connections
-![alt text](https://cdn.discordapp.com/attachments/960677104620560454/1017950729031397386/unknown.jpg)
+Now open the serial connection via USB.
 
-Current Electronics Housing
-![alt text](https://cdn.discordapp.com/attachments/946515441138937876/1017951341244600362/Screenshot_2022-09-09_201455.png)
+Next click File -> Load HEX File -> Select the uControl Firmware
 
-# Build Instructions <a name="build"></a>
-## Firmware: (ATXMEGA128A1U) <a name="firmware"></a>
-Must have Microchip studio installed along with the AVR device support that comes with the installation of Microchip studio.
-Download and open the Atmel Solution file in the Microchip branch.
-Under Tools>Device make sure to select the XMEGA plugged into a USB slot on your computer.
-If you do not have an XMEGA, you can test the build by selecting "Simulator" as your device.
-Press the run button and the code will automatically be uploaded to the XMEGA.
+Now you can click Run to erase the chip, program it, and verify that the chip is programmable.
 
-## Companion App: (Android Device running Android 12 or lower) <a name="app"></a>
-Ensure you have developer mode enabled on your device.  Perform either of the following:
-* (RECOMMENDED) Install .apk file located at the root of this repository directly onto your Android device.  You may need to allow unknown apps in Settings.
-* Install Android Studio on your computer.  Create a new project from Version Control (VSC) and clone it from this repository.  Plug your Android device into your computer via USB.  If Android Studio doesn't recognize your phone you must enable USB Debugging in the Developer Settings on your device.  Build the project and then select your plugged in Android device as the target device.  Hit the Run button and it should install the application and run it on your device.
+Lastly, click "Start Application" and make sure that there is a confirmation at the bottom that the firmware was successfully flashed.
+
+## Revert Firmware to Original Arduino
+Follow the same exact steps as in the previous section, only this time, make sure when you select a HEX file, you select the original Arduino firmware.
+Once uploaded, you should be able to use the Arduino as it was from the factory.
