@@ -81,3 +81,5 @@
 
 9/27 - Mason revisit documentation to update it for the new build.
 9/27 - Juan made progress on Beta Test Plan
+
+10/2 - Mason and Andres met to complete the Beta Test Plan and Beta Build.
