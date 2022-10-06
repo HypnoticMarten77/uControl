@@ -70,4 +70,16 @@
 9/9 - Juan made progress on the Alpha Test Plan, setting up skeleton of document, and adding task flows for software components.
 9/9 - Andres, Mason, and Sam finished the Alpha Build and Alpha Test Plan.
 
+9/15 - Mason researched new/improved hardware, initated list of possible hardware components.
+9/16 - Mason ordered new hardware: shield, mega 2560, bt
+
+9/21 - Mason tested new hardware (WORKS). Writing basic functionality to support new hardware- essentially a conversion from old hardware to new, not too much has changed.
+
+9/25 Juan, Andres, Mason, Sam met to discuss shift in development based on Mason new discovery with new hardware. 
+
 9/26 - Sam worked on the Beta Build of the app.
+
+9/27 - Mason revisit documentation to update it for the new build.
+9/27 - Juan made progress on Beta Test Plan
+
+10/2 - Mason and Andres met to complete the Beta Test Plan and Beta Build.

@@ -63,7 +63,8 @@ Wireframe for app faces
 ### External Interface <a name="external"></a>
 --Supported Controller Systems
 * Phone Emulation - v0.2
-* </i>Xbox One - COMING SOON</i>
+* </i>Xbox One WIRED - v0.1</i>
+* </i>Xbox One S Bluetooth - ALMOST FINSIHED</i>
 * </i>Playstation 4 (Dualshock) - COMING SOON</i>
 * <i>Nintendo Switch -COMING SOON</i>
 
@@ -87,15 +88,22 @@ Wireframe for app faces
 * Weight: 3g
 
 
---Microprocessor Specifications (ATXMEGA128A1U Chipset)
-* 8 bit core size
-* 32 MHz clock speed
-* 128kb FLASH program memory
-* 2k X 8 EEPROM
-* 1.6V ~ 3.6V
-* 50MHz internal oscillator
-* Microchip Technologies
-* AVR XMEGA A1U
+--Microprocessor Specifications (ATMEGA2560 Chipset) USED FOR PROGRAM
+* Arduino MEGA 2560 (Can also use Arduino UNO *specs vary*)
+* 16 MHz clock speed
+* 256KB FLASH MEMORY (8KB used by bootloader)
+* 8KB SRAM
+* 4KB EEPROM
+* 5V Operating Voltage
+* 7-12V Input Voltage
+
+--HID Controller Specifications (ATMEGA16U2 Chipset) (2nd processor located on the Arduino)
+* 8 bit AVR microcontroller
+* 32 x 8 General Purpose Working Registers
+* 16K Bytes of In-System Self-Programmable Flash
+* 512 EEPROM
+* 512 Internal SRAM
+
 
 # Schematics and Diagrams <a name="diagrams"></a>
 Hard-wire Connections
@@ -105,12 +113,14 @@ Current Electronics Housing
 ![alt text](https://cdn.discordapp.com/attachments/946515441138937876/1017951341244600362/Screenshot_2022-09-09_201455.png)
 
 # Build Instructions <a name="build"></a>
-## Firmware: (ATXMEGA128A1U) <a name="firmware"></a>
-Must have Microchip studio installed along with the AVR device support that comes with the installation of Microchip studio.
-Download and open the Atmel Solution file in the Microchip branch.
-Under Tools>Device make sure to select the XMEGA plugged into a USB slot on your computer.
-If you do not have an XMEGA, you can test the build by selecting "Simulator" as your device.
-Press the run button and the code will automatically be uploaded to the XMEGA.
+## Firmware: (ATMEGA16U2 and ATMEGA2560) <a name="firmware"></a>
+You will need to install custom firmware onto the Arduino to take full advantage of our proprietary systems.
+Please follow the README locaed in the Arduino Mega 2560 branch.
+
+![alt text](https://cdn.discordapp.com/attachments/960677104620560454/1026241686352965742/IMG_4642.jpg)
+
+## PLEASE FOLLOW THIS LINK FOR THE BETA BUILD ADDITIONS
+[ARDUINO MEGA 2560 FIRMWARE](https://github.com/amaldonadomartin77/uControl/tree/Arduino-Mega-2560)
 
 ## Companion App: (Android Device running Android 12 or lower) <a name="app"></a>
 Ensure you have developer mode enabled on your device.  Perform either of the following:
