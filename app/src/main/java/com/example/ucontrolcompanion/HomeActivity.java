@@ -99,9 +99,13 @@ public class HomeActivity extends AppCompatActivity {
         if (address == null)
             Toast.makeText(this, "Please perform a scan for your uControl device.", Toast.LENGTH_LONG).show();
         else {
-            Intent intent = new Intent(this, emulatedController.class);
-            intent.putExtra("Address", address);
-            startActivity(intent);
+            if(textView.getText().equals("Emulated")) {
+                Intent intent = new Intent(this, emulatedController.class);
+                intent.putExtra("Address", address);
+                startActivity(intent);
+            }
+            else
+                Toast.makeText(this, "Configuration sent!", Toast.LENGTH_LONG).show();
         }
     }
 
