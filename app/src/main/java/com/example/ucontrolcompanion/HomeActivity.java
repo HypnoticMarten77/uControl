@@ -69,11 +69,11 @@ public class HomeActivity extends AppCompatActivity {
                 scanLeDevice();
             }
         });
-        Button pairControllerButton = findViewById(R.id.button11);
+        /*Button pairControllerButton = findViewById(R.id.button11);
         pairControllerButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) { openPairControllerActivity(); }
-        });
+        });*/
     }
     public void openPairControllerActivity(){
         if (address == null)
