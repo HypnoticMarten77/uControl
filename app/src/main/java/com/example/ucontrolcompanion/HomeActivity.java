@@ -104,8 +104,12 @@ public class HomeActivity extends AppCompatActivity {
                 intent.putExtra("Address", address);
                 startActivity(intent);
             }
-            else
-                Toast.makeText(this, "Configuration sent!", Toast.LENGTH_LONG).show();
+            else {
+                //Toast.makeText(this, "Configuration sent!", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(this, PairController.class);
+                intent.putExtra("Address", address);
+                startActivity(intent);
+            }
         }
     }
 
