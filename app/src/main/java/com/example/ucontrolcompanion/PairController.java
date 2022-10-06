@@ -134,6 +134,8 @@ public class PairController extends AppCompatActivity {
         // ServiceConnection listens for connection/disconnection
         Intent gattServiceIntent = new Intent(this, BluetoothLeService.class);
         bindService(gattServiceIntent, serviceConnection, Context.BIND_AUTO_CREATE);
+        TextView textView = findViewById(R.id.textView8);
+        textView.setText("Configuration sent!\nYou may return to the previous screen");
         //List<BluetoothGattService> serviceList = bluetoothLeService.getSupportedGattServices();
         /*TextView service = findViewById(R.id.textView6);
         for(int i = 0; i < serviceList.size(); i++){
