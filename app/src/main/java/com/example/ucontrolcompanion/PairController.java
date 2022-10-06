@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -135,7 +136,12 @@ public class PairController extends AppCompatActivity {
         Intent gattServiceIntent = new Intent(this, BluetoothLeService.class);
         bindService(gattServiceIntent, serviceConnection, Context.BIND_AUTO_CREATE);
         TextView textView = findViewById(R.id.textView8);
-        textView.setText("Configuration sent!\nYou may return to the previous screen");
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                textView.setText("Configuration sent!\nYou may return to the previous screen");
+            }
+        }, 3000);
         //List<BluetoothGattService> serviceList = bluetoothLeService.getSupportedGattServices();
         /*TextView service = findViewById(R.id.textView6);
         for(int i = 0; i < serviceList.size(); i++){
