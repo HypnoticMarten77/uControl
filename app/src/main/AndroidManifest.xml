@@ -40,6 +40,10 @@
             android:exported="false"
             android:label="Emulated Controller" />
         <activity
+            android:name=".ConnectedSelect"
+            android:exported="false"
+            android:label="Connected Select" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="uC Companion"

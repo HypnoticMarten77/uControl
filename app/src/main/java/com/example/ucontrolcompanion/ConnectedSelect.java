@@ -17,9 +17,11 @@ import android.os.IBinder;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -140,67 +142,31 @@ public class ConnectedSelect extends AppCompatActivity {
         Intent gattServiceIntent = new Intent(this, BluetoothLeService.class);
         bindService(gattServiceIntent, serviceConnection, Context.BIND_AUTO_CREATE);
 
+        Spinner input = findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence>adapter=ArrayAdapter.createFromResource(this, R.array.inputs, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        input.setAdapter(adapter);
 
+        Spinner output = findViewById(R.id.spinner2);
+        Button upButton = findViewById(R.id.button10);
+        ArrayAdapter<CharSequence>adapter2=ArrayAdapter.createFromResource(this, R.array.inputs, android.R.layout.simple_spinner_item);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        output.setAdapter(adapter2);
 
+        String selected = input.getSelectedItem().toString();
+        byte[] inputSel = new byte[0];
+        if(selected == "Xbox")
+            inputSel = new byte[]{'X', 'B', '1', '0'};
+        else if(selected == "Playstation")
+            inputSel = new byte[]{'P', 'S', '4', '0'};
+        else if(selected == "Nintendo")
+            inputSel = new byte[]{'N', 'S', 'P', '0'};
 
-
-        Button upButton = findViewById(R.id.button3);
+        byte[] finalInputSel = inputSel;
         upButton.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                byte[] data = {'D', 'P', 'U', '0'};
-                if(motionEvent.getAction() == MotionEvent.ACTION_DOWN ){
-                    sendInput(data);
-                } else if(motionEvent.getAction() == MotionEvent.ACTION_UP || motionEvent.getAction() ==MotionEvent.ACTION_CANCEL){
-                    sendInput(data);
-                }
-                return false;
-            }
-        });
-        Button downButton = findViewById(R.id.button5);
-        downButton.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                byte[] data = {'D', 'P', 'D', '0'};
-                if(motionEvent.getAction() == MotionEvent.ACTION_DOWN ){
-                    sendInput(data);
-                } else if(motionEvent.getAction() == MotionEvent.ACTION_UP || motionEvent.getAction() ==MotionEvent.ACTION_CANCEL){
-                    sendInput(data);
-                }
-                return false;
-            }
-        });
-        Button leftButton = findViewById(R.id.button6);
-        leftButton.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                byte[] data = {'D', 'P', 'L', '0'};
-                if(motionEvent.getAction() == MotionEvent.ACTION_DOWN ){
-                    sendInput(data);
-                } else if(motionEvent.getAction() == MotionEvent.ACTION_UP || motionEvent.getAction() ==MotionEvent.ACTION_CANCEL){
-                    sendInput(data);
-                }
-                return false;
-            }
-        });
-        Button rightButton = findViewById(R.id.button7);
-        rightButton.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                byte[] data = {'D', 'P', 'R', '0'};
-                if(motionEvent.getAction() == MotionEvent.ACTION_DOWN ){
-                    sendInput(data);
-                } else if(motionEvent.getAction() == MotionEvent.ACTION_UP || motionEvent.getAction() ==MotionEvent.ACTION_CANCEL){
-                    sendInput(data);
-                }
-                return false;
-            }
-        });
-        Button aButton = findViewById(R.id.button8);
-        aButton.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                byte[] data = {'B', 'T', 'N', 'A', '0'};
+                byte[] data = finalInputSel;
                 if(motionEvent.getAction() == MotionEvent.ACTION_DOWN ){
                     sendInput(data);
                 } else if(motionEvent.getAction() == MotionEvent.ACTION_UP || motionEvent.getAction() ==MotionEvent.ACTION_CANCEL){

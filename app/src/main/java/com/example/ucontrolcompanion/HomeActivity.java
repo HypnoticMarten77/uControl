@@ -15,6 +15,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.util.Pair;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -79,7 +80,7 @@ public class HomeActivity extends AppCompatActivity {
         if (address == null)
             Toast.makeText(this, "Please perform a scan for your uControl device.", Toast.LENGTH_LONG).show();
         else {
-            Intent intent = new Intent(this, PairController.class);
+            Intent intent = new Intent(this, ConnectedSelect.class);
             intent.putExtra("Address", address);
             startActivity(intent);
         }
@@ -106,7 +107,7 @@ public class HomeActivity extends AppCompatActivity {
             }
             else {
                 //Toast.makeText(this, "Configuration sent!", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(this, PairController.class);
+                Intent intent = new Intent(this, ConnectedSelect.class);
                 intent.putExtra("Address", address);
                 startActivity(intent);
             }
