@@ -85,3 +85,5 @@
 10/2 - Mason and Andres met to complete the Beta Test Plan and Beta Build.
 
 10/16 - Andres began refactoring code for the Companion App and redesigning some elements.
+
+10/17 - Whole group met up and tested input controllers, PS5 and PS4 read correctly.  App went through revisions.
