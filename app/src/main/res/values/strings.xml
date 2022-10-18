@@ -29,8 +29,16 @@
     <string name="ucontrol_address">No uControl found</string>
     <string name="pair_controller">Pair Controller</string>
     <string-array name="inputs">
-        <item>Xbox</item>
+        <item>PS5 (Dualsense)</item>
+        <item>PS4 (Dualshock 4)</item>
+        <item>Xbox One S</item>
+        <item>Nintendo Switch Pro Controller</item>
+        <item>Nintendo Wii U Pro Controller</item>
+        <item>Nintendo Wii Remote</item>
+    </string-array>
+    <string-array name="outputs">
         <item>Playstation</item>
-        <item>Nintendo</item>
+        <item>Xbox</item>
+        <item>Nintendo Switch</item>
     </string-array>
 </resources>

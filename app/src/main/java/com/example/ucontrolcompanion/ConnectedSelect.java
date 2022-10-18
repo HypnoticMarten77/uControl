@@ -148,25 +148,30 @@ public class ConnectedSelect extends AppCompatActivity {
         input.setAdapter(adapter);
 
         Spinner output = findViewById(R.id.spinner2);
-        Button upButton = findViewById(R.id.button10);
-        ArrayAdapter<CharSequence>adapter2=ArrayAdapter.createFromResource(this, R.array.inputs, android.R.layout.simple_spinner_item);
+        Button sendButton = findViewById(R.id.button10);
+        ArrayAdapter<CharSequence>adapter2=ArrayAdapter.createFromResource(this, R.array.outputs, android.R.layout.simple_spinner_item);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_item);
         output.setAdapter(adapter2);
 
-        String selected = input.getSelectedItem().toString();
-        byte[] inputSel = new byte[0];
-        if(selected.equals("Xbox"))
-            inputSel = new byte[]{'X', 'B', '1', '0'};
-        else if(selected.equals("Playstation"))
-            inputSel = new byte[]{'P', 'S', '4', '0'};
-        else if(selected.equals("Nintendo"))
-            inputSel = new byte[]{'N', 'S', 'P', '0'};
-
-        byte[] finalInputSel = inputSel;
-        upButton.setOnTouchListener(new View.OnTouchListener() {
+        sendButton.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                byte[] data = finalInputSel;
+
+                String selected = input.getSelectedItem().toString();
+                byte[] inputSel = new byte[0];
+                if(selected.contains("PS5"))
+                    inputSel = new byte[]{'P', 'S', '5', '0'};
+                else if(selected.contains("PS4"))
+                    inputSel = new byte[]{'P', 'S', '4', '0'};
+                else if(selected.contains("Xbox"))
+                    inputSel = new byte[]{'X', 'B', '1', '0'};
+                else if(selected.contains("Switch"))
+                    inputSel = new byte[]{'N', 'S', 'P', '0'};
+                else if(selected.contains("Wii U Pro"))
+                    inputSel = new byte[]{'W', 'U', 'P', '0'};
+                else if(selected.contains("Remote"))
+                    inputSel = new byte[]{'N', 'W', 'R', '0'};
+                byte[] data = inputSel;
                 if(motionEvent.getAction() == MotionEvent.ACTION_DOWN ){
                     sendInput(data);
                 } else if(motionEvent.getAction() == MotionEvent.ACTION_UP || motionEvent.getAction() ==MotionEvent.ACTION_CANCEL){
