@@ -155,11 +155,11 @@ public class ConnectedSelect extends AppCompatActivity {
 
         String selected = input.getSelectedItem().toString();
         byte[] inputSel = new byte[0];
-        if(selected == "Xbox")
+        if(selected.equals("Xbox"))
             inputSel = new byte[]{'X', 'B', '1', '0'};
-        else if(selected == "Playstation")
+        else if(selected.equals("Playstation"))
             inputSel = new byte[]{'P', 'S', '4', '0'};
-        else if(selected == "Nintendo")
+        else if(selected.equals("Nintendo"))
             inputSel = new byte[]{'N', 'S', 'P', '0'};
 
         byte[] finalInputSel = inputSel;
