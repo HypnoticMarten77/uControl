@@ -143,14 +143,14 @@ public class ConnectedSelect extends AppCompatActivity {
         bindService(gattServiceIntent, serviceConnection, Context.BIND_AUTO_CREATE);
 
         Spinner input = findViewById(R.id.spinner);
-        ArrayAdapter<CharSequence>adapter=ArrayAdapter.createFromResource(this, R.array.inputs, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence>adapter=ArrayAdapter.createFromResource(this, R.array.inputs, R.layout.spinner_item_selected);
+        adapter.setDropDownViewResource(R.layout.spinner_item);
         input.setAdapter(adapter);
 
         Spinner output = findViewById(R.id.spinner2);
         Button sendButton = findViewById(R.id.button10);
-        ArrayAdapter<CharSequence>adapter2=ArrayAdapter.createFromResource(this, R.array.outputs, android.R.layout.simple_spinner_item);
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence>adapter2=ArrayAdapter.createFromResource(this, R.array.outputs, R.layout.spinner_item_selected);
+        adapter2.setDropDownViewResource(R.layout.spinner_item);
         output.setAdapter(adapter2);
 
         sendButton.setOnTouchListener(new View.OnTouchListener() {
