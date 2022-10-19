@@ -40,9 +40,9 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.welcome_scan);
 
-        Button controllerButton = findViewById(R.id.button4);
+        /*Button controllerButton = findViewById(R.id.button4);
         controllerButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,8 +55,9 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 openConsoleActivity();
             }
-        });
+        });*/
         Button startButton = findViewById(R.id.button);
+        startButton.setVisibility(View.INVISIBLE);
         startButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,24 +101,24 @@ public class HomeActivity extends AppCompatActivity {
         if (address == null)
             Toast.makeText(this, "Please perform a scan for your uControl device.", Toast.LENGTH_LONG).show();
         else {
-            if(textView.getText().equals("Emulated")) {
+            /*if(textView.getText().equals("Emulated")) {
                 Intent intent = new Intent(this, emulatedController.class);
                 intent.putExtra("Address", address);
                 startActivity(intent);
             }
-            else {
+            else {*/
                 //Toast.makeText(this, "Configuration sent!", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(this, ConnectedSelect.class);
                 intent.putExtra("Address", address);
                 startActivity(intent);
-            }
+            //}
         }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK){
+        /*if(resultCode == RESULT_OK){
             if(requestCode == CONTROLLER_ACTIVITY_REQUEST_CODE){
                 String returnString = data.getStringExtra(Intent.EXTRA_TEXT);
                 TextView textView = findViewById(R.id.textView3);
@@ -130,8 +131,7 @@ public class HomeActivity extends AppCompatActivity {
                 TextView textView = findViewById(R.id.textView4);
                 textView.setText(returnString);
             }
-        }
-
+        }*/
     }
 
     private void scanLeDevice() {
@@ -165,8 +165,10 @@ public class HomeActivity extends AppCompatActivity {
                 address = result.getDevice().getAddress();
                 addrText.setText("Address: " + address);
                 scanning = false;
+                Button butt = findViewById(R.id.button);
+                butt.setVisibility(View.VISIBLE);
             }
-            else if (result.getDevice().getName() != null){
+            /*else if (result.getDevice().getName() != null){
                 TextView target = findViewById(R.id.textView3);
                 if (target.getText().equals("Xbox") && result.getDevice().getName().contains("Xbox")) {
                     address = result.getDevice().getAddress();
@@ -186,7 +188,7 @@ public class HomeActivity extends AppCompatActivity {
                     textView.setText(address);
                     scanning = false;
                 }
-            }
+            }*/
         }
     };
 }
