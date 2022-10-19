@@ -182,10 +182,10 @@ public class ConnectedSelect extends AppCompatActivity {
                 else if(selected.contains("Remote"))
                     inputSel = new byte[]{'N', 'W', 'R'};
                 byte[] data = inputSel;
-                //if(motionEvent.getAction() == MotionEvent.ACTION_DOWN ){
+                if(motionEvent.getAction() == MotionEvent.ACTION_UP ){
                     sendInput(data);
-                //}
-                Toast.makeText(ConnectedSelect.this,"Configuration sent!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ConnectedSelect.this,"Configuration sent!", Toast.LENGTH_SHORT).show();
+                }
                 return false;
             }
         });
