@@ -83,7 +83,17 @@
 9/27 - Juan made progress on Beta Test Plan
 
 10/2 - Mason and Andres met to complete the Beta Test Plan and Beta Build.
+10/3, 10/4 - Mason worked on HID implementation.
+10/5 - Mason Finished all parts to turn in for Beta Build.
+10/6 - Mason started preparing demo for Beta Build.
+10/7 - Mason finished demo.
+10/8 - Mason continued on HID implementation.
 
-10/16 - Andres began refactoring code for the Companion App and redesigning some elements.
+10/15 - Mason worked on soldering a PCB to modularize the build.
+10/16 - Andres began refactoring code for the Companion App and redesigning some elements. Mason worked on PCB.
 
 10/17 - Whole group met up and tested input controllers, PS5 and PS4 read correctly.  App went through revisions.
+
+10/19 - Mason continued PCB (had to restart a couple of times to get it right).
+10/19 - Mason worked on getting switching between devices setup.
+10/19 - Mason implemented software SPI for custom pins attached to an interrupt controller.
