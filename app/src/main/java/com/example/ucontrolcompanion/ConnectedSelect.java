@@ -185,6 +185,7 @@ public class ConnectedSelect extends AppCompatActivity {
                 //if(motionEvent.getAction() == MotionEvent.ACTION_DOWN ){
                     sendInput(data);
                 //}
+                Toast.makeText(ConnectedSelect.this,"Configuration sent!", Toast.LENGTH_SHORT).show();
                 return false;
             }
         });
