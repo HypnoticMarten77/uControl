@@ -74,7 +74,7 @@ public class ConnectedSelect extends AppCompatActivity {
             } else if (BluetoothLeService.ACTION_GATT_DISCONNECTED.equals(action)) {
                 isGattConnected = false;
                 finish();
-                Toast.makeText(ConnectedSelect.this,"Error: uControl disconnected.", Toast.LENGTH_LONG).show();
+                Toast.makeText(ConnectedSelect.this,"Error: uControl disconnected.", Toast.LENGTH_SHORT).show();
             } else if (BluetoothLeService.ACTION_GATT_SERVICES_DISCOVERED.equals(action)) {
                 displayGattServices(bluetoothLeService.getSupportedGattServices());
             }
