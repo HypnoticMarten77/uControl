@@ -95,7 +95,6 @@ public class HomeActivity extends AppCompatActivity {
         startActivityForResult(intent, CONSOLE_ACTIVITY_REQUEST_CODE);
     }
     public void openStartActivity(){
-        TextView textView = findViewById(R.id.textView3);
         //if(!textView.getText().equals("Emulated"))
             //Toast.makeText(this, "Please select the emulated controller.", Toast.LENGTH_LONG).show();
         if (address == null)
@@ -110,6 +109,10 @@ public class HomeActivity extends AppCompatActivity {
                 //Toast.makeText(this, "Configuration sent!", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(this, ConnectedSelect.class);
                 intent.putExtra("Address", address);
+                TextView addrText = findViewById(R.id.textView7);
+                addrText.setText("No uControl found");
+                Button butt = findViewById(R.id.button);
+                butt.setVisibility(View.INVISIBLE);
                 startActivity(intent);
             //}
         }
