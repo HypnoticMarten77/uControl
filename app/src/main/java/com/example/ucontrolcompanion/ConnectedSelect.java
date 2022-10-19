@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -151,6 +152,13 @@ public class ConnectedSelect extends AppCompatActivity {
 
         Spinner output = findViewById(R.id.spinner2);
         Button sendButton = findViewById(R.id.button10);
+        sendButton.setVisibility(View.INVISIBLE);
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                sendButton.setVisibility(View.VISIBLE);
+            }
+        }, 3000);   //3 seconds
         ArrayAdapter<CharSequence>adapter2=ArrayAdapter.createFromResource(this, R.array.outputs, R.layout.spinner_item_selected);
         adapter2.setDropDownViewResource(R.layout.spinner_item);
         output.setAdapter(adapter2);
