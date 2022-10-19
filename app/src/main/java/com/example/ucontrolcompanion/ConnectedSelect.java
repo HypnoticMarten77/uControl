@@ -162,23 +162,21 @@ public class ConnectedSelect extends AppCompatActivity {
                 String selected = input.getSelectedItem().toString();
                 byte[] inputSel = new byte[0];
                 if(selected.contains("PS5"))
-                    inputSel = new byte[]{'P', 'S', '5', '0'};
+                    inputSel = new byte[]{'P', 'S', '5'};
                 else if(selected.contains("PS4"))
-                    inputSel = new byte[]{'P', 'S', '4', '0'};
+                    inputSel = new byte[]{'P', 'S', '4'};
                 else if(selected.contains("Xbox"))
-                    inputSel = new byte[]{'X', 'B', '1', '0'};
+                    inputSel = new byte[]{'X', 'B', '1'};
                 else if(selected.contains("Switch"))
-                    inputSel = new byte[]{'N', 'S', 'P', '0'};
+                    inputSel = new byte[]{'N', 'S', 'P'};
                 else if(selected.contains("Wii U Pro"))
-                    inputSel = new byte[]{'W', 'U', 'P', '0'};
+                    inputSel = new byte[]{'W', 'U', 'P'};
                 else if(selected.contains("Remote"))
-                    inputSel = new byte[]{'N', 'W', 'R', '0'};
+                    inputSel = new byte[]{'N', 'W', 'R'};
                 byte[] data = inputSel;
-                if(motionEvent.getAction() == MotionEvent.ACTION_DOWN ){
+                //if(motionEvent.getAction() == MotionEvent.ACTION_DOWN ){
                     sendInput(data);
-                } else if(motionEvent.getAction() == MotionEvent.ACTION_UP || motionEvent.getAction() ==MotionEvent.ACTION_CANCEL){
-                    sendInput(data);
-                }
+                //}
                 return false;
             }
         });
