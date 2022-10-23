@@ -93,6 +93,7 @@
 10/16 - Andres began refactoring code for the Companion App and redesigning some elements. Mason worked on PCB.
 
 10/17 - Whole group met up and tested input controllers, PS5 and PS4 read correctly.  App went through revisions.
+10/18 - Sam fully implemented redesign of app.
 
 10/19 - Mason continued PCB (had to restart a couple of times to get it right).
 10/19 - Mason worked on getting switching between devices setup.
@@ -101,3 +102,4 @@
 10/21 - Mason Finished resolding the final PCB
 10/22 - Mason setup interrupt controller to receive switching commands from the phone app (WORKS).
 10/22 - Mason building software for testing switching controllers.
+10/22 - Sam designed first draft of uControl case.
