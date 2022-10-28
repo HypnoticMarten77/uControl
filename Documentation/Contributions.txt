@@ -106,3 +106,4 @@
 
 10/26 - Juan, Andres, and Sam met to begin writing the Preliminary Report.
 10/27, 10/28 - Juan and Andres met to finish the Preliminary Report.
+10/28 - Mason finished packaging RC build and updating README.
