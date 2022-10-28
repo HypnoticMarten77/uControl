@@ -50,28 +50,30 @@ Use the uControl Companion App:
 ## Usability <a name="usability"></a>
 ### Interface <a name="interface"></a>
 Wireframe for app faces
-![alt text](https://cdn.discordapp.com/attachments/960677626811404430/1017965135840690206/interface.png)
+![alt text](https://cdn.discordapp.com/attachments/960677626811404430/1035675346512646194/Screenshot_2022-10-28_180346.png)
 ### Navigation <a name="navigation"></a>
 ![alt text](https://cdn.discordapp.com/attachments/904954102377771010/1017964646147297300/Screenshot_2022-09-09_210752.png)
 
 ## Build Quality <a name="quality"></a>
 ### Known Bugs <a name="bugs"></a>
-* Crash if emulated input is sent before actually connecting to Bluetooth. Can be avoided by wating for module to fully connect before sending controller inputs.
-* Connection freeze if app is not fully shut down before re-opening a connection.
+* (FIXED) Crash if emulated input is sent before actually connecting to Bluetooth. Can be avoided by wating for module to fully connect before sending controller inputs.
+* (FIXED) Connection freeze if app is not fully shut down before re-opening a connection.
+* App will sometimes crash when pressing "Send Configuration" too quickly if left running in the background for long periods of time.
 
 ## Vertical Features <a name="features"></a>
 ### External Interface <a name="external"></a>
 --Supported Controller Systems
-* Phone Emulation - v0.2
+* Phone Emulated Controller - DEPRECATED
 * </i>Xbox One WIRED - v0.1</i>
-* </i>Xbox One S Bluetooth - ALMOST FINSIHED</i>
-* </i>Playstation 4 (Dualshock) - COMING SOON</i>
+* </i>Xbox One S Bluetooth - COMING SOON</i>
+* </i>Playstation 4 (Dualshock) - v0.2>
+* </i>Playstation 5 (Dualsense) - v0.1>
 * <i>Nintendo Switch -COMING SOON</i>
 
 --Supported Data Emulation Types
-* Basic HID gamepad - v0.1
-* </i>Xbox One - COMING SOON</i>
-* </i>Playstation 4 (Dualshock) - COMING SOON</i>
+* HID gamepad - v0.1
+* </i>Xbox One - v0.1</i>
+* </i>Playstation (Dualshock/Dualsense) - v0.2</i>
 * <i>Nintendo Switch -COMING SOON</i>
 
 ### Internal Systems <a name="internal"></a>
