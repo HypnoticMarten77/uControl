@@ -109,7 +109,10 @@ Wireframe for app faces
 
 # Schematics and Diagrams <a name="diagrams"></a>
 ### Hard-wire Connections
-![alt text](https://cdn.discordapp.com/attachments/960677104620560454/1017950729031397386/unknown.jpg)
+![alt text](https://cdn.discordapp.com/attachments/960677104620560454/1035683404873748490/Screenshot_2022-10-28_183545.png)
+
+### Current Internals
+![alt text](https://cdn.discordapp.com/attachments/960677104620560454/1035683815357685970/IMG_4693.jpg)
 
 ### Redesigned 3D Printed Housing
 ![alt text](https://cdn.discordapp.com/attachments/904954102377771010/1035680377810984960/Screenshot_2022-10-28_182350.png)
