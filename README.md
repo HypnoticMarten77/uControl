@@ -108,11 +108,12 @@ Wireframe for app faces
 
 
 # Schematics and Diagrams <a name="diagrams"></a>
-Hard-wire Connections
+### Hard-wire Connections
 ![alt text](https://cdn.discordapp.com/attachments/960677104620560454/1017950729031397386/unknown.jpg)
 
-Current Electronics Housing
-![alt text](https://cdn.discordapp.com/attachments/946515441138937876/1017951341244600362/Screenshot_2022-09-09_201455.png)
+### Redesigned 3D Printed Housing
+![alt text](https://cdn.discordapp.com/attachments/904954102377771010/1035680377810984960/Screenshot_2022-10-28_182350.png)
+![alt text](https://cdn.discordapp.com/attachments/904954102377771010/1035679525729730650/Screenshot_2022-10-28_182015.png)
 
 # Build Instructions <a name="build"></a>
 ## Firmware: (ATMEGA16U2 and ATMEGA2560) <a name="firmware"></a>
@@ -121,7 +122,7 @@ Please follow the README locaed in the Arduino Mega 2560 branch.
 
 ![alt text](https://cdn.discordapp.com/attachments/960677104620560454/1026241686352965742/IMG_4642.jpg)
 
-## PLEASE FOLLOW THIS LINK FOR THE BETA BUILD ADDITIONS
+## INSTRUCTIONS FOR FLASHING CUSTOM FIRMWARE TO THE 16U2
 [ARDUINO MEGA 2560 FIRMWARE](https://github.com/amaldonadomartin77/uControl/tree/Arduino-Mega-2560)
 
 ## Companion App: (Android Device running Android 12 or lower) <a name="app"></a>
