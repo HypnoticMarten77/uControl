@@ -37,8 +37,10 @@
         <item>Nintendo Wii Remote</item>
     </string-array>
     <string-array name="outputs">
+        <item>HID</item>
         <item>Playstation</item>
         <item>Xbox</item>
         <item>Nintendo Switch</item>
+        <item>Wii</item>
     </string-array>
 </resources>
