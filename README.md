@@ -133,6 +133,15 @@ Please follow the README locaed in the Arduino Mega 2560 branch.
 
 ![alt text](https://cdn.discordapp.com/attachments/960677104620560454/1026241686352965742/IMG_4642.jpg)
 
+## Build your own custom controller firmware
+Please locate the [LUFA library](https://github.com/amaldonadomartin77/uControl/tree/main/PRODUCTION%20RELEASE/Controllers/Descriptors) that has been provided, you will need to compile the device descriptors against this in order to generate .HEX files for the new firmware
+* You need to use some version of linux to compile this [(I would recommend using WSL with Ubuntu to do this)](https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-10#1-overview).
+* Pick a controller as a template (I will be using the Wii as an example). This is the current descriptor of the Production Release.
+![alt text](https://cdn.discordapp.com/attachments/1031691474582118491/1047693179056562247/image.png)
+* I would recommend following [this guide](https://eleccelerator.com/tutorial-about-usb-hid-report-descriptors/) as it is great for learning about HID descriptors and what they can do.
+* Once you have a desired output, change directories (CD) to the location of the descriptor along with the provided make file.
+* Run "make clean; make" and then [FLASH THE CUSTOM FIRMWARE](https://github.com/amaldonadomartin77/uControl/tree/Arduino-Mega-2560) to the 16U2. You can follow the link or use the section below to do this.
+
 ## INSTRUCTIONS FOR FLASHING CUSTOM FIRMWARE TO THE 16U2
 [ARDUINO MEGA 2560 FIRMWARE](https://github.com/amaldonadomartin77/uControl/tree/Arduino-Mega-2560)
 
