@@ -149,3 +149,9 @@ Please locate the [LUFA library](https://github.com/amaldonadomartin77/uControl/
 Ensure you have developer mode enabled on your device.  Perform either of the following:
 * (RECOMMENDED) Install .apk file located at the root of this repository directly onto your Android device.  You may need to allow unknown apps in Settings.
 * Install Android Studio on your computer.  Create a new project from Version Control (VSC) and clone it from this repository.  Plug your Android device into your computer via USB.  If Android Studio doesn't recognize your phone you must enable USB Debugging in the Developer Settings on your device.  Build the project and then select your plugged in Android device as the target device.  Hit the Run button and it should install the application and run it on your device.
+
+# Credits to any libraries or resources that were used
+* [USB Host Shield Library for reading controller inputs from a bluetooth USB](https://github.com/felis/USB_Host_Shield_2.0)
+* [Learn to write a HID Device Descriptor](https://eleccelerator.com/tutorial-about-usb-hid-report-descriptors/)
+* [Arduino USB HID Device Library](https://github.com/harlequin-tech/arduino-usb)
+* [LUFA for compiling firmwares into HEX](http://www.fourwalledcubicle.com/LUFA.php)
