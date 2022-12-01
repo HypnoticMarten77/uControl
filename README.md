@@ -59,22 +59,26 @@ Wireframe for app faces
 * (FIXED) Crash if emulated input is sent before actually connecting to Bluetooth. Can be avoided by wating for module to fully connect before sending controller inputs.
 * (FIXED) Connection freeze if app is not fully shut down before re-opening a connection.
 * App will sometimes crash when pressing "Send Configuration" too quickly if left running in the background for long periods of time.
+* Sometimes when disconnecting or reconnecting a controller, random controller buttons/actions can be sent.
 
 ## Vertical Features <a name="features"></a>
 ### External Interface <a name="external"></a>
---Supported Controller Systems
+--Supported Controller Systems (Many support wired connections)
 * Phone Emulated Controller - DEPRECATED
 * </i>Xbox One WIRED - v0.1</i>
-* </i>Xbox One S Bluetooth - COMING SOON</i>
+* </i>Xbox 360 via Wifi adapeter - 0.1</i>
+* </i>Playstation 3 - v0.1>
 * </i>Playstation 4 (Dualshock) - v0.2>
 * </i>Playstation 5 (Dualsense) - v0.1>
-* <i>Nintendo Switch -COMING SOON</i>
+* <i>Switch Pro -0.1</i>
+* <i>Switch Pro -0.1</i>
+
 
 --Supported Data Emulation Types
 * HID gamepad - v0.1
-* </i>Xbox One - v0.1</i>
-* </i>Playstation (Dualshock/Dualsense) - v0.2</i>
-* <i>Nintendo Switch -COMING SOON</i>
+* </i>Xbox One - N/A</i>
+* </i>Playstation (Dualshock/Dualsense) - v0.1</i>
+* <i>Nintendo Switch -N/A</i>
 
 ### Internal Systems <a name="internal"></a>
 --Bluetooth Specifications
@@ -99,12 +103,16 @@ Wireframe for app faces
 * 5V Operating Voltage
 * 7-12V Input Voltage
 
---HID Controller Specifications (ATMEGA16U2 Chipset) (2nd processor located on the Arduino)
+## --HID Specifications
+* Vendor ID (VID) - 0x03EB
+* Product ID (PID) - 0x2043
+* (ATMEGA16U2 Chipset) (2nd processor located on the Arduino)
 * 8 bit AVR microcontroller
 * 32 x 8 General Purpose Working Registers
 * 16K Bytes of In-System Self-Programmable Flash
 * 512 EEPROM
 * 512 Internal SRAM
+
 
 
 # Schematics and Diagrams <a name="diagrams"></a>
