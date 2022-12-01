@@ -112,7 +112,6 @@
 11/05 - Mason began new HID firmware writing.
 11/06 - Mason did research on HID device descriptors, specifically INPOINTS and ENDPOINTS.
 11/10 - Mason added LUFA library to repo to compile against in order to generate HID firmware for the 16U2.  Andres installed custom firmware onto a Nintendo Wii to prepare it for testing purposes.
-
 11/11 - Mason began testing new HID descriptors (works on PC sort of right now).  Andres prepared HIDTest program for Wii and verified that it worked with other controllers.
 11/12 - Mason received Wii in order to test console HID performance/compatability.
 11/13 - Mason resumed adding support for new controller. I basically rewrote a lot of the code to be modular and class-based so we can support more in the future.
