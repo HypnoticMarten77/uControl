@@ -119,4 +119,6 @@
 
 11/29 - Mason recorded demo for production release and began updating the necessary info for final release.
 11/29 - Mason tweaked a couple of things on the app for visibility/functionality (nothing major).
+
 11/30 - Mason finished the production release and updated the GitHub repository.
+11/30 - Juan, Mason, Andres and Sam worked on finishing the Final Report and Post Mortem Presentation.
